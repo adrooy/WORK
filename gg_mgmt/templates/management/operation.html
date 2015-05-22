@@ -1,0 +1,163 @@
+{% extends "base/base.html" %}
+
+{% block title %}操作记录{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+     
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>操作日期</label>
+                                <input type="text" id="operation_date" autocomplete="off" name="daterange" value="{{operation_date}}" class="search_text left" style="width:250px;vertical-align:middle;"/>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>操作人</label>
+                                <select id="user_name" class="form-control">
+                                    {%for User_name in user_names %}
+                                        {% ifequal User_name user_name %}
+                                            <option value="{{User_name}}" selected="selected">{{User_name}}</option>
+                                        {%else%}
+                                            <option value="{{User_name}}">{{User_name}}</option>
+                                        {% endifequal %}
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>操作页</label>
+                                <select id="page" class="form-control">
+                                    {%for Page in pages %}
+                                        {% ifequal page Page %}
+                                            <option value="{{Page}}" selected="selected">{{Page}}</option>
+                                        {%else%}
+                                            <option value="{{Page}}">{{Page}}</option>
+                                        {% endifequal %}
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <button id="search_operation" class="btn btn-info btn-flat" type="button">查询操作记录</button>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+        </section><!-- /.content -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <th>序号</th>
+                                <th>操作时间</th>
+                                <th>操作人</th>
+                                <th>操作页面</th>
+                                <th>目标ID</th>
+                                <th>行为</th>
+                                {% for list in infos %}
+                                    <tr>
+                                        <td style="width: 1%">{{list.id}}</td>
+                                        <td style="width: 1%">{{list.operation_time}}</td>
+                                        <td style="width: 1%">{{list.user_name}}</td>
+                                        <td style="width: 1%">{{list.page}}</td>
+                                        {%if list.game_id%}
+                                            <td style="width: 1%"><a href="/gg_mgmt/game/detail/?game_id={{list.game_id}}">{{list.game_name}}</a></td>
+                                        {% else %}
+                                            <td style="width: 1%">{{list.goal}}</td>
+                                        {% endif %}
+                                        <td style="width: 1%">{{list.action}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            {% include "base/pagination.html" %}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        $('input[name="daterange"]').daterangepicker(
+                {
+                    format: 'YYYY-MM-DD',
+//    startDate: '2013-01-01',
+//    endDate: '2013-12-31'
+                },
+                function(start, end, label) {
+//  alert(start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                }
+        );
+        $("#search_operation").click(function(){
+            var operation_date = $("#operation_date").val();
+            var user_name = $("#user_name").val();
+            var page = $("#page").val();
+            var action = $("#action").val();
+            window.location.href = '/gg_mgmt/developer/operation/?operation_date='+operation_date;
+        });
+        $("#user_name").change(function(){
+            var operation_date = $("#operation_date").val();
+            var user_name = $("#user_name").val();
+            var page = $("#page").val();
+            var action = $("#action").val();
+            window.location.href = '/gg_mgmt/developer/operation/?operation_date='+operation_date+'&user_name='+user_name;
+        });
+        $("#page").change(function(){
+            var operation_date = $("#operation_date").val();
+            var user_name = $("#user_name").val();
+            var page = $("#page").val();
+            var action = $("#action").val();
+            window.location.href = '/gg_mgmt/developer/operation/?operation_date='+operation_date+'&user_name='+user_name+'&page='+page;
+        });
+        $("#action").change(function(){
+            var operation_date = $("#operation_date").val();
+            var user_name = $("#user_name").val();
+            var page = $("#page").val();
+            var action = $("#action").val();
+            window.location.href = '/gg_mgmt/developer/operation/?operation_date='+operation_date+'&user_name='+user_name+'&page='+page+'&action='+action;
+        });
+    </script>
+    <script type="text/javascript" src="/gg_mgmt/static/js/adddate.js" ></script>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base/base.html" %}
+
+{% block title %}feedback{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="col-xs-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <form action="/gg_mgmt/feedback" method="GET">
+                                    查看
+                                    {% ifequal start_date 'all' %}
+                                        <input type="text" name="start_date" value="请选择起始日期" onclick="SelectDate(this,'yyyyMMdd hhmmss')"></input>
+                                    {% else %}
+                                        <input type="text" name="start_date" value="{{ start_date }}" onclick="SelectDate(this,'yyyyMMdd hhmmss')"></input>
+                                    {% endifequal %}
+                                    与
+                                    {% ifequal end_date 'all' %}
+                                        <input type="text" name="end_date" value="请选择结束日期" onclick="SelectDate(this,'yyyyMMdd hhmmss')"></input>
+                                    {% else %}
+                                        <input type="text" name="end_date" value="{{ end_date }}" onclick="SelectDate(this,'yyyyMMdd hhmmss')"></input>
+                                    {% endifequal %}
+                                    之间的反馈
+                                    <input type="submit">
+                                </form>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+        </section><!-- /.content -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <th style="width: 10%">游戏名称</th>
+                                <th style="width: 5%">反馈总次数</th>
+                                <th style="width: 5%">游戏描述错误</th>
+                                <th style="width: 5%">无法下载</th>
+                                <th style="width: 5%">无法安装</th>
+                                <!--th>安装后无法打开</th>
+                        <th>数据包安装失败</th-->
+                                <th style="width: 5%">无法开启辅助</th>
+                                <th style="width: 5%">游戏闪退</th>
+                                <th style="width: 5%">无法正常内购</th>
+                                <th style="width: 5%">内购失败，需要谷歌服务</th>
+                                <th style="width: 5%">内购失败，购买成功，数量不增加</th>
+                                <th style="width: 5%">内购失败，刷不出商品</th>
+                                <th style="width: 5%">内购失败，购买不成功</th>
+                                <th style="width: 5%">内购失败，内购闪退</th>
+                                <th style="width: 5%">无法游戏，需要谷歌服务</th>
+                                <th style="width: 5%">无法游戏，必须更新游戏</th>
+                                <th style="width: 5%">无法游戏，游戏过程中闪退</th>
+                                <th style="width: 5%">无法游戏，封号</th>
+                                <th style="width: 5%">无法游戏，无法连接网络</th>
+                                <th style="width: 5%">无法游戏，需要&无法下载数据包</th>
+                                {% for info in info_counts %}
+                                    <tr>
+                                        <td><a href="/gg_mgmt/game/detail/?game_id={{ info.0 }}"> {{info.1}} </a> </td>
+                                        <td><a href="/gg_mgmt/feedback/detail/?game_id={{ info.0 }}&option=0&start_date={{start_date}}&end_date={{end_date}}">{{info.2}}</a></td>
+                                        {% for option_count in info.3 %}
+                                            {% ifnotequal forloop.counter 4 %}
+                                                {% ifnotequal forloop.counter 5 %}
+                                                    {% ifnotequal forloop.counter 6 %}
+                                                        <td><a href="/gg_mgmt/feedback/detail/?game_id={{ info.0 }}&option={{forloop.counter}}&start_date={{start_date}}&end_date={{end_date}}">{{option_count}}</a></td>
+                                                    {% endifnotequal forloop.counter 6 %}
+                                                {% endifnotequal forloop.counter 5 %}
+                                            {% endifnotequal forloop.counter 4 %}
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            {% include "feedback/pagination.html" %}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+                <div class="col-xs-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <form action="/gg_mgmt/feedback/download/" method="post">{% csrf_token %}
+                                        <input type="hidden" name="start_date" value="{{ start_date }}"/>
+                                        <input type="hidden" name="end_date" value="{{ end_date }}"/>
+                                        <button type="submit" name="s_thread" class="btn btn-primary ">下载文件</button>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div><!-- /.box-body -->
+                        </form>
+                    </div><!-- /.box -->
+                    </div--><!--/.col (left) -->
+                </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript" src="/gg_mgmt/static/js/adddate.js" ></script>
+    </script>
+
+{% endblock %}

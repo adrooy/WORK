@@ -1,0 +1,89 @@
+{% extends "base/base.html" %}
+
+{% block title %}变量详情页{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <th style="width: 20%">基本信息</th>
+                                <th style="width: 80%">内容</th>
+                                <tbody>
+                                {% if info.id %}
+                                    <tr>
+                                        <td>变量ID</td>
+                                        <td><input type="text" style="width:400px" id="id" value="{{ info.id }}" readonly="readonly"/></td>
+                                    </tr>
+                                {% endif %}
+                                <tr>
+                                    <td>变量名</td>
+                                    <td>
+                                        <select id="vari_id" class="form-control">
+                                            {% for vari in varis %}
+                                                {% ifequal vari.id info.vari_id %}
+                                                    <option value="{{ vari.id }}" selected="selected">{{ vari.name }}</option>
+                                                {% else %}
+                                                    <option value="{{ vari.id }}">{{ vari.name }}</option>
+                                                {% endifequal %}
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>变量可用值</td>
+                                    <td><textarea style="width:80%;height:300px;"
+                                                  id="value" rows="12" cols="140"
+                                                  class="required" tabindex="4">{{ info.value }}</textarea></td>
+                                </tr>
+                                <tr>
+                                    {% ifequal perm_name '可编辑用户' %}
+                                        <td><input
+                                                style="width:140px;background:#0099ff;color:#ffffff"
+                                                type="button" id="label-btn"
+                                                onclick="save_vari()"
+                                                value="确定保存变量信息"></td>
+                                    {% endifequal %}
+                                    <td><input
+                                            style="width:140px;background:#0099ff;color:#ffffff"
+                                            type="button" id="label-btn"
+                                            onclick="save_vari()" value="确定保存变量信息"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        function save_vari(){
+            var id = $("#id").val();
+            var vari_id = $("#vari_id").val();
+            var value = $("#value").val();
+            var descJson = {};
+            descJson['id'] = id;
+            descJson['vari_id'] = vari_id;
+            descJson['value'] = value;
+            if (value){
+                //      alert(JSON.stringify(descJson));
+                $.post('/gg_mgmt/article/vari/save/', descJson, function(result){
+                    window.location.href = '/gg_mgmt/article/vari/info/';
+                });
+            }else{
+                alert('请确认输入完整信息！');
+            }
+        }
+    </script>
+{% endblock %}

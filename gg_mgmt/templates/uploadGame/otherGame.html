@@ -1,0 +1,102 @@
+{% extends "header.html" %}
+
+{% block title %}国内市场游戏资料{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <aside class="side">
+
+        <!-- Main content -->
+
+        <section class="content">
+            <div class="col-md-10">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>APK信息</td>
+                            <td><textarea style="width:80%;" id="game_json" rows="12" cols="140" class="required" tabindex="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>百度下载链接</td>
+                            <td><input style="width:80%" type="text" id="baidu_url"/></td>
+                        </tr>
+                        <tr>
+                            <td>游戏更新说明</td>
+                            <td><input style="width:80%" type="text" id="update_desc"/></td>
+                        </tr>
+                        <tr>
+                            <td>游戏名</td>
+                            <td><input style="width:80%" type="text" id="game_name"/></td>
+                        </tr>
+                        <tr>
+                            <td>语言</td>
+                            <td><input style="width:80%" type="text" id="game_language"/></td>
+                        </tr>
+                        <tr>
+                            <td>厂商</td>
+                            <td><input style="width:80%" type="text" id="developer"/></td>
+                        </tr>
+                        <tr>
+                            <td>ICON</td>
+                            <td><input style="width:80%" type="text" id="icon_url"/></td>
+                        </tr>
+                        <tr>
+                            <td>截图</td>
+                            <td><textarea style="width:80%;height:300px;" id="screen_shot_urls" rows="12" cols="140" class="required" tabindex="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>详细描述</td>
+                            <td><textarea style="width:80%;height:300px;" id="detail_desc" rows="12" cols="140" class="required" tabindex="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            {% ifequal perm_name '可编辑用户' %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="addOtherGame" value="上传其他游戏"></td>
+                            {% endifequal %}
+                            {% ifequal user.is_superuser 1 %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="addOtherGame" value="上传其他游戏"></td>
+                            {% endifequal %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    </aside><!-- /.right-side -->
+
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+$("#addOtherGame").click(function(){
+    var game_json = $("#game_json").val();
+    var baidu_url = $("#baidu_url").val();
+    var update_desc = $("#update_desc").val();
+    var game_name = $("#game_name").val();
+    var icon_url = $("#icon_url").val();
+    var screen_shot_urls = $("#screen_shot_urls").val();
+    var detail_desc = $("#detail_desc").val();
+    var developer = $("#developer").val();
+    var game_language = $("#game_language").val();
+    var descJson = {};
+    descJson['game_json'] = game_json;
+    descJson['baidu_url'] = baidu_url;
+    descJson['update_desc'] = update_desc;
+    descJson['game_name'] = game_name;
+    descJson['icon_url'] = icon_url;
+    descJson['screen_shot_urls'] = screen_shot_urls;
+    descJson['detail_desc'] = detail_desc;
+    descJson['game_language'] = game_language;
+    descJson['developer'] = developer;
+    alert(JSON.stringify(descJson));
+    if(game_json && baidu_url && game_name && icon_url && screen_shot_urls && detail_desc && developer && game_language){
+  //      $("#addOtherGame").css("visibility", "hidden");
+        $.post('/gg_mgmt/uploadGame/addOtherGame/', descJson, function(game_id){
+            window.location.href = '/gg_mgmt/game/detail/?game_id='+game_id;
+        });
+    }else{
+        alert("请输入游戏资料！！！");
+    }
+});
+</script>
+{% endblock %}

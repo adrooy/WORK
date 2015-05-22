@@ -1,0 +1,821 @@
+2015-05-21 16:15:35,170 DEBUG START
+2015-05-21 16:15:35,170 DEBUG 3
+2015-05-21 16:15:35,270 DEBUG 
+
+
+
+2015-05-21 16:15:35,291 DEBUG GET DATA: 256
+2015-05-21 16:15:35,291 DEBUG END
+2015-05-21 16:15:35,292 DEBUG 
+
+
+
+2015-05-21 16:16:14,697 DEBUG START
+2015-05-21 16:16:14,698 DEBUG 3
+2015-05-21 16:16:14,796 DEBUG 
+
+
+
+2015-05-21 16:16:15,610 DEBUG GET DATA: 0
+2015-05-21 16:16:15,611 DEBUG END
+2015-05-21 16:16:15,611 DEBUG 
+
+
+
+2015-05-21 16:19:10,165 DEBUG 
+
+
+
+2015-05-21 16:19:10,170 DEBUG starting thread (client mode): 0x911ba90L
+2015-05-21 16:19:10,177 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-21 16:19:10,178 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-21 16:19:10,179 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-21 16:19:10,179 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-21 16:19:10,231 DEBUG Switch to new keys ...
+2015-05-21 16:19:14,006 DEBUG starting thread (client mode): 0x89771d0L
+2015-05-21 16:19:14,009 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-21 16:19:14,010 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-21 16:19:14,011 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-21 16:19:14,011 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-21 16:19:14,026 DEBUG Switch to new keys ...
+2015-05-21 16:19:14,065 DEBUG userauth is OK
+2015-05-21 16:19:14,084 INFO Authentication (password) successful!
+2015-05-21 16:19:14,107 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-21 16:19:14,108 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-21 16:19:14,108 INFO Secsh channel 1 opened.
+2015-05-21 16:19:14,112 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-21 16:19:14,137 INFO [chan 1] Opened sftp connection (server version 3)
+2015-05-21 16:19:14,138 DEBUG [chan 1] normalize('.')
+2015-05-21 16:19:14,139 DEBUG [chan 1] lstat('/home/xiangxiaowei/Documents/operation_shell/.')
+2015-05-21 16:19:14,140 DEBUG [chan 1] stat('/home/xiangxiaowei/Documents/operation_shell/.')
+2015-05-21 16:19:14,142 DEBUG [chan 1] open('/home/xiangxiaowei/Documents/operation_shell/./2015-05-21.tar.gz', 'wb')
+2015-05-21 16:19:14,143 DEBUG [chan 1] open('/home/xiangxiaowei/Documents/operation_shell/./2015-05-21.tar.gz', 'wb') -> 00000000
+2015-05-21 16:19:14,183 DEBUG [chan 1] close(00000000)
+2015-05-21 16:19:14,185 DEBUG [chan 1] stat('/home/xiangxiaowei/Documents/operation_shell/./2015-05-21.tar.gz')
+2015-05-21 16:19:14,185 INFO [chan 1] sftp session closed.
+2015-05-21 16:19:14,186 DEBUG [chan 1] EOF sent (1)
+2015-05-21 16:19:14,188 DEBUG [chan 1] EOF received (1)
+2015-05-21 16:19:14,197 DEBUG 106
+2015-05-21 16:19:14,212 DEBUG update_iplay_release_list : 8
+2015-05-21 16:19:14,289 DEBUG EOF in transport thread
+2015-05-21 16:19:14,338 DEBUG EOF in transport thread
+2015-05-21 16:19:56,084 DEBUG START
+2015-05-21 16:19:56,084 DEBUG 3
+2015-05-21 16:19:56,185 DEBUG 
+
+
+
+2015-05-21 16:19:56,992 DEBUG GET DATA: 0
+2015-05-21 16:19:56,992 DEBUG END
+2015-05-21 16:19:56,992 DEBUG 
+
+
+
+2015-05-21 16:20:27,135 DEBUG START
+2015-05-21 16:20:27,135 DEBUG 3
+2015-05-21 16:20:27,230 DEBUG 
+
+
+
+2015-05-21 16:20:28,082 DEBUG GET DATA: 0
+2015-05-21 16:20:28,082 DEBUG END
+2015-05-21 16:20:28,083 DEBUG 
+
+
+
+2015-05-21 16:21:16,462 DEBUG START
+2015-05-21 16:21:16,462 DEBUG 3
+2015-05-21 16:21:16,561 DEBUG 
+
+
+
+2015-05-21 16:21:17,390 DEBUG GET DATA: 0
+2015-05-21 16:21:17,390 DEBUG END
+2015-05-21 16:21:17,391 DEBUG 
+
+
+
+2015-05-21 16:21:44,543 DEBUG START
+2015-05-21 16:21:44,543 DEBUG 1
+2015-05-21 16:21:44,642 DEBUG 
+
+
+
+2015-05-21 16:21:45,481 DEBUG GET DATA: 0
+2015-05-21 16:21:45,567 DEBUG 
+
+
+
+2015-05-21 16:21:45,573 DEBUG starting thread (client mode): 0x37df0ad0L
+2015-05-21 16:21:45,579 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-21 16:21:45,580 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-21 16:21:45,581 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-21 16:21:45,581 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-21 16:21:45,595 DEBUG Switch to new keys ...
+2015-05-21 16:21:47,877 DEBUG starting thread (client mode): 0x3764d210L
+2015-05-21 16:21:47,884 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-21 16:21:47,885 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-21 16:21:47,885 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-21 16:21:47,885 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-21 16:21:47,938 DEBUG Switch to new keys ...
+2015-05-21 16:21:47,977 DEBUG userauth is OK
+2015-05-21 16:21:47,994 INFO Authentication (password) successful!
+2015-05-21 16:21:48,014 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-21 16:21:48,015 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-21 16:21:48,016 INFO Secsh channel 1 opened.
+2015-05-21 16:21:48,019 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-21 16:21:48,042 INFO [chan 1] Opened sftp connection (server version 3)
+2015-05-21 16:21:48,043 DEBUG [chan 1] normalize('.')
+2015-05-21 16:21:48,044 DEBUG [chan 1] lstat('/home/xiangxiaowei/Documents/operation_shell/.')
+2015-05-21 16:21:48,045 DEBUG [chan 1] stat('/home/xiangxiaowei/Documents/operation_shell/.')
+2015-05-21 16:21:48,047 DEBUG [chan 1] open('/home/xiangxiaowei/Documents/operation_shell/./2015-05-21.tar.gz', 'wb')
+2015-05-21 16:21:48,048 DEBUG [chan 1] open('/home/xiangxiaowei/Documents/operation_shell/./2015-05-21.tar.gz', 'wb') -> 00000000
+2015-05-21 16:21:48,091 DEBUG [chan 1] close(00000000)
+2015-05-21 16:21:48,092 DEBUG [chan 1] stat('/home/xiangxiaowei/Documents/operation_shell/./2015-05-21.tar.gz')
+2015-05-21 16:21:48,093 INFO [chan 1] sftp session closed.
+2015-05-21 16:21:48,093 DEBUG [chan 1] EOF sent (1)
+2015-05-21 16:21:48,095 DEBUG [chan 1] EOF received (1)
+2015-05-21 16:21:48,112 DEBUG 106
+2015-05-21 16:21:48,125 DEBUG update_iplay_release_list : 8
+2015-05-21 16:21:48,196 DEBUG EOF in transport thread
+2015-05-21 16:21:48,199 DEBUG EOF in transport thread
+2015-05-21 16:21:48,216 DEBUG END
+2015-05-21 16:21:48,217 DEBUG 
+
+
+
+2015-05-22 14:15:10,582 DEBUG 
+
+
+
+2015-05-22 14:15:42,541 DEBUG 
+
+
+
+2015-05-22 14:19:55,071 DEBUG 
+
+
+
+2015-05-22 14:20:39,746 DEBUG 
+
+
+
+2015-05-22 14:21:04,514 DEBUG 
+
+
+
+2015-05-22 14:45:27,051 DEBUG 
+
+
+
+2015-05-22 14:48:31,490 DEBUG 
+
+
+
+2015-05-22 14:49:43,713 DEBUG 
+
+
+
+2015-05-22 14:51:10,290 DEBUG 
+
+
+
+2015-05-22 14:51:28,566 DEBUG 
+
+
+
+2015-05-22 14:51:49,349 DEBUG 
+
+
+
+2015-05-22 14:51:55,072 DEBUG 
+
+
+
+2015-05-22 14:52:52,952 DEBUG 
+
+
+
+2015-05-22 14:53:01,252 DEBUG 
+
+
+
+2015-05-22 14:53:16,402 DEBUG 
+
+
+
+2015-05-22 14:53:18,615 DEBUG 
+
+
+
+2015-05-22 14:57:53,268 DEBUG 
+
+
+
+2015-05-22 14:59:21,038 DEBUG 
+
+
+
+2015-05-22 14:59:43,861 DEBUG 
+
+
+
+2015-05-22 14:59:54,136 DEBUG 
+
+
+
+2015-05-22 15:02:44,924 DEBUG 
+
+
+
+2015-05-22 15:03:37,761 DEBUG 
+
+
+
+2015-05-22 15:04:14,259 DEBUG 
+
+
+
+2015-05-22 15:04:21,653 DEBUG 
+
+
+
+2015-05-22 15:04:26,945 DEBUG 
+
+
+
+2015-05-22 15:04:28,998 DEBUG 
+
+
+
+2015-05-22 15:05:04,978 DEBUG 
+
+
+
+2015-05-22 15:06:03,143 DEBUG 
+
+
+
+2015-05-22 15:07:21,225 DEBUG 
+
+
+
+2015-05-22 15:07:40,110 DEBUG 
+
+
+
+2015-05-22 15:08:20,329 DEBUG 
+
+
+
+2015-05-22 15:09:31,026 DEBUG 
+
+
+
+2015-05-22 15:10:14,969 DEBUG 
+
+
+
+2015-05-22 15:10:24,133 DEBUG 
+
+
+
+2015-05-22 15:10:40,109 DEBUG 
+
+
+
+2015-05-22 15:10:58,154 DEBUG 
+
+
+
+2015-05-22 15:11:42,936 DEBUG 
+
+
+
+2015-05-22 15:13:35,997 DEBUG 
+
+
+
+2015-05-22 15:13:59,102 DEBUG 
+
+
+
+2015-05-22 15:14:12,670 DEBUG 
+
+
+
+2015-05-22 15:15:49,817 DEBUG 
+
+
+
+2015-05-22 15:16:35,557 DEBUG 
+
+
+
+2015-05-22 15:16:44,858 DEBUG 
+
+
+
+2015-05-22 15:17:49,780 DEBUG 
+
+
+
+2015-05-22 15:17:56,714 DEBUG 
+
+
+
+2015-05-22 15:18:05,019 DEBUG 
+
+
+
+2015-05-22 15:32:46,423 DEBUG 
+
+
+
+2015-05-22 15:32:46,426 DEBUG 
+
+
+
+2015-05-22 15:32:46,427 DEBUG START release info for stat
+2015-05-22 15:34:12,828 DEBUG 
+
+
+
+2015-05-22 15:34:12,832 DEBUG 
+
+
+
+2015-05-22 15:34:12,832 DEBUG START release info for stat
+2015-05-22 15:36:59,103 DEBUG 
+
+
+
+2015-05-22 15:36:59,107 DEBUG 
+
+
+
+2015-05-22 15:36:59,107 DEBUG START release info for stat
+2015-05-22 15:37:11,978 DEBUG 
+
+
+
+2015-05-22 15:37:11,982 DEBUG 
+
+
+
+2015-05-22 15:37:11,982 DEBUG START release info for stat
+2015-05-22 15:37:36,087 DEBUG 
+
+
+
+2015-05-22 15:37:36,090 DEBUG 
+
+
+
+2015-05-22 15:37:36,091 DEBUG START release info for stat
+2015-05-22 15:37:37,357 DEBUG END release info for stat
+2015-05-22 15:37:51,193 DEBUG 
+
+
+
+2015-05-22 15:37:51,197 DEBUG 
+
+
+
+2015-05-22 15:37:51,197 DEBUG START release info for stat
+2015-05-22 15:37:53,076 DEBUG END release info for stat
+2015-05-22 15:37:54,351 DEBUG 
+
+
+
+2015-05-22 15:37:54,355 DEBUG 
+
+
+
+2015-05-22 15:37:54,356 DEBUG START release info for stat
+2015-05-22 15:37:56,380 DEBUG END release info for stat
+2015-05-22 15:47:14,379 DEBUG 
+
+
+
+2015-05-22 15:47:14,382 DEBUG 
+
+
+
+2015-05-22 15:47:14,383 DEBUG START release info for stat
+2015-05-22 15:47:16,237 DEBUG END release info for stat
+2015-05-22 15:57:49,269 DEBUG 
+
+
+
+2015-05-22 15:57:49,273 DEBUG 
+
+
+
+2015-05-22 15:57:49,273 DEBUG START release info for stat
+2015-05-22 15:57:51,170 DEBUG END release info for stat
+2015-05-22 16:24:06,794 DEBUG 
+
+
+
+2015-05-22 16:24:06,797 DEBUG 
+
+
+
+2015-05-22 16:24:06,797 DEBUG START release info for stat
+2015-05-22 16:25:11,022 DEBUG 
+
+
+
+2015-05-22 16:25:11,026 DEBUG 
+
+
+
+2015-05-22 16:25:11,026 DEBUG START release info for stat
+2015-05-22 16:25:13,232 DEBUG END release info for stat
+2015-05-22 16:25:29,624 DEBUG 
+
+
+
+2015-05-22 16:25:29,628 DEBUG 
+
+
+
+2015-05-22 16:25:29,628 DEBUG START release info for stat
+2015-05-22 16:25:31,890 DEBUG END release info for stat
+2015-05-22 16:29:16,317 DEBUG 
+
+
+
+2015-05-22 16:29:16,321 DEBUG 
+
+
+
+2015-05-22 16:29:16,321 DEBUG START release info for stat
+2015-05-22 16:29:18,456 DEBUG END release info for stat
+2015-05-22 16:29:52,125 DEBUG 
+
+
+
+2015-05-22 16:29:52,129 DEBUG 
+
+
+
+2015-05-22 16:29:52,129 DEBUG START release info for stat
+2015-05-22 16:29:54,369 DEBUG END release info for stat
+2015-05-22 16:31:35,396 DEBUG 
+
+
+
+2015-05-22 16:31:35,400 DEBUG 
+
+
+
+2015-05-22 16:31:35,400 DEBUG START release info for stat
+2015-05-22 16:31:37,569 DEBUG END release info for stat
+2015-05-22 16:41:14,862 DEBUG 
+
+
+
+2015-05-22 16:41:14,866 DEBUG 
+
+
+
+2015-05-22 16:41:14,866 DEBUG START release info for stat
+2015-05-22 16:41:23,524 DEBUG 
+
+
+
+2015-05-22 16:41:23,528 DEBUG 
+
+
+
+2015-05-22 16:41:23,529 DEBUG START release info for stat
+2015-05-22 16:41:58,586 DEBUG 
+
+
+
+2015-05-22 16:41:58,589 DEBUG 
+
+
+
+2015-05-22 16:41:58,590 DEBUG START release info for stat
+2015-05-22 16:42:00,289 DEBUG END release info for stat
+2015-05-22 16:42:07,204 DEBUG 
+
+
+
+2015-05-22 16:42:07,208 DEBUG 
+
+
+
+2015-05-22 16:42:07,208 DEBUG START release info for stat
+2015-05-22 16:42:10,318 DEBUG END release info for stat
+2015-05-22 16:42:40,501 DEBUG 
+
+
+
+2015-05-22 16:42:40,505 DEBUG 
+
+
+
+2015-05-22 16:42:40,505 DEBUG START release info for stat
+2015-05-22 16:42:42,418 DEBUG END release info for stat
+2015-05-22 16:45:37,338 DEBUG 
+
+
+
+2015-05-22 16:45:37,341 DEBUG 
+
+
+
+2015-05-22 16:45:37,342 DEBUG START release info for stat
+2015-05-22 16:45:38,101 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_label_info > /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:45:38,182 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_pkg_info > /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:45:38,207 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_ad_info > /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:45:39,148 DEBUG END release info for stat
+2015-05-22 16:48:51,469 DEBUG 
+
+
+
+2015-05-22 16:48:51,473 DEBUG 
+
+
+
+2015-05-22 16:48:51,473 DEBUG START release info for stat
+2015-05-22 16:48:52,276 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_label_info > /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:48:52,356 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_pkg_info > /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:48:52,379 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_ad_info > /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:48:53,007 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:48:53,613 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:48:53,653 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:48:53,687 DEBUG END release info for stat
+2015-05-22 16:51:19,216 DEBUG 
+
+
+
+2015-05-22 16:51:19,220 DEBUG 
+
+
+
+2015-05-22 16:51:19,220 DEBUG START release info for stat
+2015-05-22 16:51:20,025 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_label_info > /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:51:20,101 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_pkg_info > /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:51:20,119 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_ad_info > /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:51:20,393 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:51:20,994 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:51:21,340 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:51:21,379 DEBUG starting thread (client mode): 0x7936fcd0L
+2015-05-22 16:51:21,386 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 16:51:21,388 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 16:51:21,388 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 16:51:21,389 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 16:51:21,403 DEBUG Switch to new keys ...
+2015-05-22 16:51:24,323 DEBUG starting thread (client mode): 0x786bd050L
+2015-05-22 16:51:24,329 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 16:51:24,331 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 16:51:24,331 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 16:51:24,332 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 16:51:24,347 DEBUG Switch to new keys ...
+2015-05-22 16:51:24,387 DEBUG userauth is OK
+2015-05-22 16:51:24,407 INFO Authentication (password) successful!
+2015-05-22 16:51:24,420 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-22 16:51:24,421 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-22 16:51:24,421 INFO Secsh channel 1 opened.
+2015-05-22 16:51:24,425 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 16:51:24,427 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 16:51:24,477 DEBUG [chan 1] EOF received (1)
+2015-05-22 16:51:24,477 DEBUG [chan 1] EOF sent (1)
+2015-05-22 16:51:24,578 DEBUG EOF in transport thread
+2015-05-22 16:51:24,609 DEBUG EOF in transport thread
+2015-05-22 16:55:38,321 DEBUG 
+
+
+
+2015-05-22 16:55:38,325 DEBUG 
+
+
+
+2015-05-22 16:55:38,325 DEBUG START release info for stat
+2015-05-22 16:55:39,486 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_label_info > /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:55:39,566 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_pkg_info > /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:55:39,588 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_ad_info > /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:55:39,866 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:55:40,468 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:55:40,512 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:55:40,555 DEBUG starting thread (client mode): 0x67618cd0L
+2015-05-22 16:55:40,562 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 16:55:40,563 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 16:55:40,564 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 16:55:40,564 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 16:55:40,584 DEBUG Switch to new keys ...
+2015-05-22 16:55:42,985 DEBUG starting thread (client mode): 0x66966050L
+2015-05-22 16:55:42,990 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 16:55:42,991 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 16:55:42,992 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 16:55:42,992 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 16:55:43,042 DEBUG Switch to new keys ...
+2015-05-22 16:55:43,083 DEBUG userauth is OK
+2015-05-22 16:55:43,105 INFO Authentication (password) successful!
+2015-05-22 16:55:43,121 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-22 16:55:43,123 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-22 16:55:43,123 INFO Secsh channel 1 opened.
+2015-05-22 16:55:43,126 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 16:55:43,128 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 16:55:43,180 DEBUG [chan 1] EOF received (1)
+2015-05-22 16:55:43,181 DEBUG [chan 1] EOF sent (1)
+2015-05-22 16:55:43,281 DEBUG EOF in transport thread
+2015-05-22 16:55:43,289 DEBUG EOF in transport thread
+2015-05-22 16:58:07,278 DEBUG 
+
+
+
+2015-05-22 16:58:07,282 DEBUG 
+
+
+
+2015-05-22 16:58:07,282 DEBUG START release info for stat
+2015-05-22 16:58:08,136 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_label_info > /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:58:08,217 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_pkg_info > /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:58:08,239 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_ad_info > /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:58:08,841 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:58:09,438 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:58:09,482 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:58:09,526 DEBUG starting thread (client mode): 0x60834cd0L
+2015-05-22 16:58:09,530 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 16:58:09,531 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 16:58:09,532 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 16:58:09,533 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 16:58:09,548 DEBUG Switch to new keys ...
+2015-05-22 16:58:13,391 DEBUG starting thread (client mode): 0x5fb82050L
+2015-05-22 16:58:13,395 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 16:58:13,396 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 16:58:13,397 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 16:58:13,397 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 16:58:13,414 DEBUG Switch to new keys ...
+2015-05-22 16:58:13,454 DEBUG userauth is OK
+2015-05-22 16:58:13,471 INFO Authentication (password) successful!
+2015-05-22 16:58:13,495 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-22 16:58:13,496 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-22 16:58:13,496 INFO Secsh channel 1 opened.
+2015-05-22 16:58:13,500 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 16:58:13,501 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 16:58:13,544 DEBUG [chan 1] EOF received (1)
+2015-05-22 16:58:13,544 DEBUG [chan 1] EOF sent (1)
+2015-05-22 16:58:13,645 DEBUG EOF in transport thread
+2015-05-22 16:58:13,655 DEBUG EOF in transport thread
+2015-05-22 16:59:53,857 DEBUG 
+
+
+
+2015-05-22 16:59:53,861 DEBUG 
+
+
+
+2015-05-22 16:59:53,861 DEBUG START release info for stat
+2015-05-22 16:59:54,624 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_label_info > /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:59:54,697 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_pkg_info > /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:59:54,718 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_ad_info > /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:59:54,983 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 16:59:55,612 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 16:59:55,673 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 16:59:55,713 DEBUG starting thread (client mode): 0x112a8cd0L
+2015-05-22 16:59:55,716 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 16:59:55,717 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 16:59:55,718 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 16:59:55,718 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 16:59:55,736 DEBUG Switch to new keys ...
+2015-05-22 16:59:58,638 DEBUG starting thread (client mode): 0x105f6050L
+2015-05-22 16:59:58,640 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 16:59:58,642 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 16:59:58,642 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 16:59:58,643 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 16:59:58,691 DEBUG Switch to new keys ...
+2015-05-22 16:59:58,731 DEBUG userauth is OK
+2015-05-22 16:59:58,742 INFO Authentication (password) successful!
+2015-05-22 16:59:58,772 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-22 16:59:58,773 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-22 16:59:58,774 INFO Secsh channel 1 opened.
+2015-05-22 16:59:58,777 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 16:59:58,778 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 16:59:58,809 DEBUG [chan 1] EOF received (1)
+2015-05-22 16:59:58,809 DEBUG [chan 1] EOF sent (1)
+2015-05-22 16:59:58,910 DEBUG EOF in transport thread
+2015-05-22 16:59:58,942 DEBUG EOF in transport thread
+2015-05-22 17:01:05,893 DEBUG 
+
+
+
+2015-05-22 17:01:05,897 DEBUG 
+
+
+
+2015-05-22 17:01:05,897 DEBUG START release info for stat
+2015-05-22 17:01:06,704 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_label_info > /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 17:01:06,781 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_pkg_info > /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 17:01:06,803 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_ad_info > /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 17:01:07,099 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 17:01:07,697 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 17:01:07,758 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 17:01:07,798 DEBUG starting thread (client mode): 0x525c2cd0L
+2015-05-22 17:01:07,801 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 17:01:07,802 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 17:01:07,803 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 17:01:07,803 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 17:01:07,856 DEBUG Switch to new keys ...
+2015-05-22 17:01:10,638 DEBUG starting thread (client mode): 0x51910050L
+2015-05-22 17:01:10,642 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 17:01:10,643 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 17:01:10,644 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 17:01:10,644 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 17:01:10,662 DEBUG Switch to new keys ...
+2015-05-22 17:01:10,703 DEBUG userauth is OK
+2015-05-22 17:01:10,718 INFO Authentication (password) successful!
+2015-05-22 17:01:10,743 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-22 17:01:10,744 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-22 17:01:10,745 INFO Secsh channel 1 opened.
+2015-05-22 17:01:10,748 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 17:01:10,749 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 17:01:10,797 DEBUG [chan 1] EOF received (1)
+2015-05-22 17:01:10,798 DEBUG [chan 1] EOF sent (1)
+2015-05-22 17:01:10,817 DEBUG /opt/bash/restart/restart_t1.sh: False
+2015-05-22 17:01:10,818 DEBUG END release info for stat
+2015-05-22 17:01:10,899 DEBUG EOF in transport thread
+2015-05-22 17:01:10,962 DEBUG EOF in transport thread
+2015-05-22 17:04:44,104 DEBUG 
+
+
+
+2015-05-22 17:04:44,107 DEBUG 
+
+
+
+2015-05-22 17:04:44,108 DEBUG START release info for stat
+2015-05-22 17:04:45,189 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_label_info > /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 17:04:45,279 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_game_pkg_info > /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 17:04:45,300 DEBUG mysqldump -h192.168.1.45 -uroot -p111111 test iplay_ad_info > /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 17:04:45,568 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_label_info_tmp.sql: True
+2015-05-22 17:04:46,199 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_game_pkg_info_tmp.sql: True
+2015-05-22 17:04:46,229 DEBUG mysql -h192.168.1.45 -uroot -p111111 iplayStatistics < /home/mgmt/operation_shell/iplay_ad_info_tmp.sql: True
+2015-05-22 17:04:46,267 DEBUG starting thread (client mode): 0x56c35cd0L
+2015-05-22 17:04:46,269 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 17:04:46,271 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 17:04:46,271 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 17:04:46,272 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 17:04:46,321 DEBUG Switch to new keys ...
+2015-05-22 17:04:48,140 DEBUG starting thread (client mode): 0x56c25050L
+2015-05-22 17:04:48,143 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 17:04:48,144 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 17:04:48,144 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 17:04:48,145 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 17:04:48,193 DEBUG Switch to new keys ...
+2015-05-22 17:04:48,232 DEBUG userauth is OK
+2015-05-22 17:04:48,244 INFO Authentication (password) successful!
+2015-05-22 17:04:48,272 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-22 17:04:48,273 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-22 17:04:48,274 INFO Secsh channel 1 opened.
+2015-05-22 17:04:48,277 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 17:04:48,279 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 17:04:48,311 DEBUG [chan 1] EOF received (1)
+2015-05-22 17:04:48,314 DEBUG [chan 1] EOF sent (1)
+2015-05-22 17:04:48,318 DEBUG /opt/bash/restart/restart_t1.sh: False
+2015-05-22 17:04:48,319 DEBUG END release info for stat
+2015-05-22 17:04:48,415 DEBUG EOF in transport thread
+2015-05-22 17:04:48,424 DEBUG EOF in transport thread
+2015-05-22 17:26:16,561 DEBUG 
+
+
+
+2015-05-22 17:26:16,561 DEBUG START update download_cnt
+2015-05-22 17:26:18,853 DEBUG starting thread (client mode): 0xc2cb8e50L
+2015-05-22 17:26:18,856 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 17:26:18,857 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 17:26:18,857 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 17:26:18,858 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 17:26:18,873 DEBUG Switch to new keys ...
+2015-05-22 17:26:21,824 DEBUG starting thread (client mode): 0xc2515650L
+2015-05-22 17:26:21,828 INFO Connected (version 2.0, client OpenSSH_5.3)
+2015-05-22 17:26:21,829 DEBUG kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-05-22 17:26:21,830 DEBUG Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-05-22 17:26:21,830 DEBUG using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-05-22 17:26:21,877 DEBUG Switch to new keys ...
+2015-05-22 17:26:21,917 DEBUG userauth is OK
+2015-05-22 17:26:21,928 INFO Authentication (password) successful!
+2015-05-22 17:26:21,958 DEBUG [chan 1] Max packet in: 34816 bytes
+2015-05-22 17:26:21,959 DEBUG [chan 1] Max packet out: 32768 bytes
+2015-05-22 17:26:21,960 INFO Secsh channel 1 opened.
+2015-05-22 17:26:21,963 DEBUG [chan 1] Sesch channel 1 request ok
+2015-05-22 17:26:21,980 INFO [chan 1] Opened sftp connection (server version 3)
+2015-05-22 17:26:21,980 DEBUG [chan 1] normalize('.')
+2015-05-22 17:26:21,981 DEBUG [chan 1] lstat('/home/mgmt')
+2015-05-22 17:26:21,983 DEBUG [chan 1] stat('/home/mgmt')
+2015-05-22 17:26:21,984 DEBUG [chan 1] open('/home/mgmt/iplay_ad_info.sql', 'wb')
+2015-05-22 17:26:21,986 DEBUG [chan 1] open('/home/mgmt/iplay_ad_info.sql', 'wb') -> 00000000
+2015-05-22 17:26:21,987 DEBUG [chan 1] close(00000000)
+2015-05-22 17:26:21,988 DEBUG [chan 1] stat('/home/mgmt/iplay_ad_info.sql')
+2015-05-22 17:26:21,990 INFO [chan 1] sftp session closed.
+2015-05-22 17:26:21,990 DEBUG [chan 1] EOF sent (1)
+2015-05-22 17:26:21,991 DEBUG True
+2015-05-22 17:26:21,992 DEBUG END update download_cnt
+2015-05-22 17:26:21,992 DEBUG [chan 1] EOF received (1)
+2015-05-22 17:26:22,079 DEBUG EOF in transport thread

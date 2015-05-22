@@ -1,0 +1,124 @@
+body {
+    font:12px/25px Arial;
+    text-align:center;
+}
+/*hr {
+    height: 1px;
+    border: 0px;
+    border-top: 1px solid #c2a99f;
+    vertical-align: middle;
+}*/
+
+.tableMain {width:600px; margin:50px auto 0;}
+.tableMain, .tableMain th {border-collapse:collapse; border:1px solid #000;}
+.scrollTable {height: 400px;overflow-x:hidden;overflow-y:auto;width:100%;}
+.scrollTable .odd td{background:#ccc;border-bottom:1px solid
+#000;border-top:1px solid #000;}
+
+.trSelected{
+    background-color: #51b2f6;
+}
+
+.il_block {
+	display: inline-block;
+}
+.w_left {
+	width: 120px;
+}
+.w_center {
+	width: 600px;
+}
+.align_left {
+	text-align: left;
+}
+.align_center {
+	text-align: center;
+}
+.align_right {
+	text-align: right;
+}
+.output_textarea {
+	width: 800px;
+}
+.t_bold {
+	font-weight: bold;
+}
+.submit_button {
+	margin-left: 50px;
+}
+
+.highlight {
+    background: #FF3333;
+}
+
+#search{margin-top:14px;width:250px;height:29px;background:#cccccc}
+#search .search_text{width:215px;height:25px;line-height:25px;color:#b0b0b0;border:0;margin:1px 0 1px 1px;padding-left:4px}
+#search .search_sub{
+    width:28px;border:0; height:29px; overflow:hidden;text-indent:-5em; cursor:pointer;
+    background: url(http://imgjs.muzhiwan.com/search_img.png);
+}
+
+.divX
+{
+    z-index:100;
+    border-style:solid;
+    border-width:1px;
+    border-color:#FF0000;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    background-color:#ffffff;
+    line-height:30px;
+    text-align:center;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:40px;
+    color:red;
+    display: none;
+}
+
+.demo{width:500px;margin:40px auto;}
+.demo span{display:inline-block;width:240px;}
+.demo span input{padding:3px;width:120px;font-size:12px;font-family:Arial, Helvetica, sans-serif;}
+
+.g-btn {  
+    display: block;
+    border-radius: 5px;
+    display: inline-block;  
+    line-height: 300%;
+    width: 20%;
+    color:#ffffff;  
+    background-color: #40c0ff;
+    text-decoration:none;
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 40%;
+    margin-right: 40%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}  
+@media only screen and (max-width: 1200px) { .g-btn{ font-size: 22px; }}  
+@media only screen and (max-width: 1100px) { .g-btn{ font-size: 21px; }}  
+@media only screen and (max-width: 1000px) { .g-btn{ font-size: 20px; }}  
+@media only screen and (max-width: 900px) { .g-btn{ font-size: 19px; }}  
+@media only screen and (max-width: 800px) { .g-btn{ font-size: 18px; }}  
+@media only screen and (max-width: 700px) { .g-btn{ font-size: 17px; }}  
+@media only screen and (max-width: 600px) { .g-btn{ font-size: 16px; }}  
+@media only screen and (max-width: 500px) { .g-btn{ font-size: 14px; }}  
+@media only screen and (max-width: 400px) { .g-btn{ font-size: 13px; }}  
+@media only screen and (max-width: 300px) { .g-btn{ font-size: 11px; }}
+
+
+.fa-stack {
+	  position: relative;
+	  display: inline-block;
+	  width: 2em;
+	  height: 2em;
+	  line-height: 2em;
+	  vertical-align: middle;
+	}
+	.fa-lg {
+	  font-size: 1.33333333em;
+	  line-height: 0.75em;
+	  vertical-align: -15%;
+	}

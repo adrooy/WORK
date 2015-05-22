@@ -1,0 +1,70 @@
+{% extends "base/base.html" %}
+
+{% block title %}插件搜索结果{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+     
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <input type="text" id="search_plugin_info" autocomplete="off" value="" />
+                                <button id="search_plugin" class="btn btn-info btn-flat" type="button">搜索</button>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+        </section><!-- /.content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body"> 
+                            <table id="example1" class="table table-bordered table-striped">
+                                <th>序号</th>
+                                <th>插件ID</th>
+                                <th>Label</th>
+                                <th>插件包名</th>
+                                <th>论坛链接</th>
+                                <th>帖子ID</th>
+                                {% for list in infos %}
+                                    <tr>
+                                        <td style="width: 4%">{{list.index}}</td>
+                                        <td style="width: 4%"><a href="/gg_mgmt/game/plugin_detail/?plugin_id={{ list.id }}">{{ list.id }}</a></td>
+                                        <td style="width: 20%">{{ list.label }}</td>
+                                        <td style="width: 30%">{{ list.pkg_name }}</td>
+                                        <td style="width: 30%"><a href="{{ list.post_url }}">{{ list.post_url }}</a></td>
+                                        <td style="width: 4%">{{ list.tid }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            {% include "base/pagination.html" %}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        $("#search_plugin").click(function(){
+            var search_plugin_info  = $("#search_plugin_info").val();
+            if(search_plugin_info){
+                window.location.href = '/gg_mgmt/game/plugin_search/?search_plugin_info='+search_plugin_info;
+            }else{
+                alert("请输入查询内容！！！");
+            }
+        });
+    </script>
+{% endblock %}

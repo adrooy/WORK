@@ -1,0 +1,146 @@
+{% extends "base/base.html" %}
+
+{% block title %}feedback{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+     
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="col-xs-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                正在查看 <b>&nbsp;{{ game_name }}&nbsp;</b> 在 <b>&nbsp;
+                                {% ifequal start_date 'all' %}
+                                    所有日期
+                                {% else %}
+                                    {{ start_date }}
+                                    &nbsp;与&nbsp;{{ end_date }}&nbsp;之间的
+                                {% endifequal %}
+                                &nbsp;</b>
+                                <b>&nbsp;{{ option_desc }}&nbsp;</b>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+        </section><!-- /.content -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <th width="10%">id</th>
+                                <th width="30%">反馈信息</th>
+                                <th width="30%">用户信息</th>
+                                <th width="30%">客户端信息</th>
+                                {% for list in feedback %}
+                                    <tr>
+                                        <td style="width: 4%">{{list.id}}</td>
+                                        <td style="width: 4%;line-height:100%">
+                                            {%for option in list.options_desc%}
+                                                {%if option%}
+                                                    <p style="line-height:100%">{{option}}</p>
+                                                {%endif%}
+                                            {%endfor%}
+                                            <br>
+                                            <p style="line-height:100%">详细信息：{%if list.content%}{{list.content}}{%else%}{{''}}{%endif%}</p>
+                                            <br>
+                                            {% ifequal perm_name '可编辑用户' %}
+                                                {% if list.attachment %}
+                                                    <p style="line-height:100%"><a target="blank" href="http://116.255.129.52/feedback/{{ list.attachment }}">下载附件</a></p>
+                                                {% endif %}
+                                            {% endifequal %}
+                                            {% ifequal user.is_superuser 1 %}
+                                                {% if list.attachment %}
+                                                    <p style="line-height:100%"><a target="blank" href="http://116.255.129.52/feedback/{{ list.attachment }}">下载附件</a></p>
+                                                {% endif %}
+                                            {% endifequal %}
+                                        </td>
+                                        <td style="width: 4%;line-height:100%">
+                                            <p style="">imei：{%if list.imei%}{{list.imei}}{%else%}{{''}}{%endif%}</p>
+                                            <p style="margin:0px; padding:0px;">vendor：{%if list.vendor%}{{list.vendor}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px;">model：{%if list.model%}{{list.model}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="">fingerprint: {%if list.fingerprint%}{{list.fingerprint}}{%else%}{{''}}{%endif%}</p>
+                                            <p style="">SDK版本信息：{%if list.sdk%}{{list.sdk}}{%else%}{{''}}{%endif%}</p>
+                                            <p style="margin:0px; padding:0px;">屏幕宽度：{%if list.widthpixels%}{{list.widthpixels}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px;">屏幕高度：{%if list.heightpixels%}{{list.heightpixels}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px;">设备像素密度: {%if list.density%}{{list.density}}{%else%}{{''}}{%endif%}</p>
+                                        </td>
+                                        <td style="width: 4%;line-height:100%;">
+                                            <p style="">客户端包名：{%if list.pkg_name%}{{list.pkg_name}}{%else%}{{''}}{%endif%}</p>
+                                            <p style="margin:0px; padding:0px; ">客户端版本号：{%if list.ver_code%}{{list.ver_code}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px; ">客户端MD5：{%if list.signature%}{{list.signature}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px; ">客户端渠道: {%if list.channel%}{{list.channel}}{%else%}{{''}}{%endif%}</p>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            {% include "feedback/pagination.html" %}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+                <div class="col-xs-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <form action="/gg_mgmt/feedback/detail_download/" method="post">{% csrf_token %}
+                                        <input type="hidden" name="game_id" value="{{ game_id }}"/>
+                                        <input type="hidden" name="start_date" value="{{ start_date }}"/>
+                                        <input type="hidden" name="end_date" value="{{ end_date }}"/>
+                                        <input type="hidden" name="option" value="{{ option }}"/>
+                                        <button type="submit" name="s_thread" class="btn btn-primary ">下载文件</button>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div><!-- /.box-body -->
+                        </form>
+                    </div><!-- /.box -->
+                    </div--><!--/.col (left) -->
+                </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        $("#month").change(function(){
+            var month = $("#month").val();
+            window.location.href = '/gg_mgmt/feedback/?Month='+month;
+        });
+        $("#search_plugin").click(function(){
+            var search_plugin_info  = $("#search_plugin_info").attr("value");
+            if(search_plugin_info){
+                window.location.href = '/gg_mgmt/game/plugin_search/?search_plugin_info='+search_plugin_info;
+            }else{
+                alert("请输入查询内容！！！");
+            }
+        });
+        $("#download").click(function(){
+            var game_id = $("#game_id").val();
+            var option = $("#option").val();
+            var start_date = $("#start_date").val();
+            var end_date = $("#end_date").val();
+            var descJson = {};
+            descJson['game_id'] = game_id;
+            descJson['option'] = option;
+            descJson['start_date'] = start_date;
+            descJson['end_date'] = end_date;
+            $.post("/gg_mgmt/feedback/download/", descJson, function(result){
+                //     history.go(0)
+                alert(result);
+            });
+        });
+    </script>
+{% endblock %}

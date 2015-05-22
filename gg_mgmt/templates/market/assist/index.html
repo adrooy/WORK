@@ -1,0 +1,114 @@
+{% extends "header.html" %}
+{% block title %}推荐页编辑{% endblock %}
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+{% block content %}
+
+    {% endifequal %}
+    {% ifequal user.is_superuser 1 %}
+    <div style="height:5%;margin-bottom:2%;margin-top:2%">
+    <input type="button" id="banner_add" value="新增banner" class="submit_button"></input> 
+    <input type="button" id="banner_delete" value="删除banner" class="submit_button"></input> 
+    <input type="button" id="banner_isenabled" value="发布banner" class="submit_button"></input> 
+    <input type="button" id="banner_notenabled" value="下线banner" class="submit_button"></input> 
+    <input type="button" id="banner_up" value="banner位置上移" class="submit_button"></input> 
+    <input type="button" id="banner_down" value="banner位置下移" class="submit_button"></input> 
+    <input type="button" id="banner_move" value="移动到指定位置" class="submit_button"></input> 
+    <input type="button" id="banner_alter" value="banner修改" class="submit_button"></input> 
+    </div>
+    <hr>
+    {% endifequal %}
+
+    <div style="height:2%;font-size:25px;margin-top:0.25%">
+    <p id="index" style="visibility:hidden" value="{{index}}"></p>
+    <p>游戏列表</p>
+    </div>
+    <hr>
+
+    {% ifequal perm_name '可编辑用户' %}
+    <div style="height:5%;margin-bottom:2%;margin-top:2%">
+    <input type="button" id="recgame_add" value="增加游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_delete" value="删除游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_isenabled" value="发布游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_notenabled" value="下线游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_up" value="游戏位置上移" class="submit_button"></input> 
+    <input type="button" id="recgame_down" value="游戏位置下移" class="submit_button"></input> 
+    <!--input type="button" id="recgame_move" value="移动到指定位置" class="submit_button"></input> 
+    <input type="button" id="game_detail" value="查看游戏详情" class="submit_button"></input--> 
+    <input type="button" id="recgame_alter" value="编辑列表下游戏信息" class="submit_button"></input> 
+    </div>
+    <hr> 
+    {% endifequal %}
+    {% ifequal user.is_superuser 1 %}
+    <div style="height:5%;margin-bottom:2%;margin-top:2%">
+    <input type="button" id="recgame_add" value="增加游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_delete" value="删除游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_isenabled" value="发布游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_notenabled" value="下线游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_up" value="游戏位置上移" class="submit_button"></input> 
+    <input type="button" id="recgame_down" value="游戏位置下移" class="submit_button"></input> 
+    <!--input type="button" id="recgame_move" value="移动到指定位置" class="submit_button"></input> 
+    <input type="button" id="game_detail" value="查看游戏详情" class="submit_button"></input--> 
+    <input type="button" id="recgame_alter" value="编辑列表下游戏信息" class="submit_button"></input> 
+    </div>
+    <hr> 
+    {% endifequal %}
+
+    <div style="width:100%;height:60%;overflow:scroll;align:center;">
+        <table border="1" id="senfe" cellspacing="0" width="80%" align="center">
+            <thead>
+                <tr>
+                    <th width="10%">游戏名</th>
+                    <th width="10%">发布状态</th>
+                    <th width="10%">序号</th>
+                    <th width="10%">游戏ID</th>
+                    <th width="10%">游戏状态</th>
+                    <th width="10%">发布时间</th>
+                    <th width="10%">下线时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                {% ifequal game.game_id game_id %}
+                <tr id="game" value="{{ game.game_id }}" class="highlight">
+                {% else %}
+                <tr id="game" value="{{ game.game_id }}">
+                {% endifequal %}
+                    {% if not game.enabled %}
+                    <td colspan="1"><a href="/gg_mgmt/game/detail/?game_id={{ game.game_id }}"><font color="#DDDDDD">{{ game.game_name }}</font></a></td>
+                    <td colspan="1"><font color="#DDDDDD">未发布</font></td>
+                    <td colspan="1"><font color="#DDDDDD">{{ game.manual_num }}</font></td>
+                    <td colspan="1"><font color="#DDDDDD">{{ game.game_id }}</font></td>
+                    <td colspan="1"><font color="#DDDDDD">{{ game.game_enabled }}</font></td>
+                    <td colspan="1"><font color="#DDDDDD">{{ game.release_date }}</font></td>
+                    <td colspan="1"><font color="#DDDDDD">{{ game.unrelease_date }}</font></td>
+                    {% endif %}
+                    {% if game.enabled %}
+                    <td colspan="1"><a href="/gg_mgmt/game/detail/?game_id={{ game.game_id }}">{{ game.game_name }}</a></td>
+                    <td colspan="1">已发布</td>
+                    <td colspan="1">{{ game.manual_num }}</td>
+                    <td colspan="1">{{ game.game_id }}</td>
+                    <td colspan="1">{{ game.game_enabled }}</td>
+                    <td colspan="1">{{ game.release_date }}</td>
+                    <td colspan="1">{{ game.unrelease_date }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="height:5%;margin-bottom:2%;margin-top:2%">
+    <!--input type="button" id="recgame_add" value="增加游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_delete" value="删除游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_isenabled" value="发布游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_notenabled" value="下线游戏" class="submit_button"></input> 
+    <input type="button" id="recgame_up" value="游戏位置上移" class="submit_button"></input> 
+    <input type="button" id="recgame_down" value="游戏位置下移" class="submit_button"></input> 
+    <input type="button" id="recgame_alter" value="编辑列表下游戏信息" class="submit_button"></input--> 
+    </div>
+ 
+{% endblock %}
+{% block extrajs %}
+    <script type="text/javascript" src="/gg_mgmt/static/js/iplay.js"></script>
+    <script type="text/javascript" src="/gg_mgmt/static/js/adddate.js" ></script>
+{% endblock %}

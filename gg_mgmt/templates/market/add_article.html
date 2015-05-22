@@ -1,0 +1,567 @@
+{% extends "base/base.html" %}
+
+{% block title %}文章详情页{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <th style="width: 20%">基本信息</th>
+                                <th style="width: 80%">内容</th>
+                                <tbody>
+                                {% if info.parent_id %}
+                                    <tr>
+                                        <td>文章类型</td>
+                                        <td>
+                                            <select id="article_type" style="width:150px">
+                                                {% ifequal info.article_type 2 %}
+                                                    <option value="2" selected="selected">游戏攻略</option>
+                                                {% endifequal %}
+                                                {% ifequal info.article_type 3 %}
+                                                    <option value="3" selected="selected">新闻评测</option>
+                                                {% endifequal %}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                                {% if not info.parent_id %}
+                                    <tr>
+                                        <td>文章类型</td>
+                                        <td>
+                                            <select id="article_type" style="width:150px">
+                                                {% ifequal article_type 1 %}
+                                                    <option value="1" selected="selected">常见问题</option>
+                                                    <option value="2">游戏攻略</option>
+                                                    <option value="3">新闻评测</option>
+                                                {% endifequal %}
+                                                {% ifequal article_type 2 %}
+                                                    <option value="1">常见问题</option>
+                                                    <option value="2" selected="selected">游戏攻略</option>
+                                                    <option value="3">新闻评测</option>
+                                                {% endifequal %}
+                                                {% ifequal article_type 3 %}
+                                                    <option value="1">常见问题</option>
+                                                    <option value="2">游戏攻略</option>
+                                                    <option value="3" selected="selected">新闻评测</option>
+                                                {% endifequal %}
+                                            </select>
+                                            {% ifequal article_type 1 %}
+                                                <select id="template_type" style="width:150px">
+                                                    {% for tem_type in template_types %}
+                                                        {% ifequal tem_type.0 template_type %}
+                                                            <option value="{{ tem_type.0 }}" selected="selected">{{ tem_type.1 }}</option>
+                                                        {% else %}
+                                                            <option value="{{ tem_type.0 }}">{{ tem_type.1 }}</option>
+                                                        {% endifequal %}
+                                                    {% endfor %}
+                                                </select>
+                                                <select id="template_id" style="width:500px">
+                                                    {% for tem in templates %}
+                                                        {% ifequal tem.3 template_type %}
+                                                            {% ifequal template_id tem.0 %}
+                                                                <option value="{{ tem.0 }}" selected="selected">{{ tem.1 }}</option>
+                                                            {% else %}
+                                                                <option value="{{ tem.0 }}">{{ tem.1 }}</option>
+                                                            {% endifequal %}
+                                                        {% endifequal %}
+                                                    {% endfor %}
+                                                </select>
+                                            {% endifequal %}
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                                {% if info.parent_id %}
+                                    <tr>
+                                        <td>parent_id</td>
+                                        <td><input type="text" readonly="readonly" id="parent_id" value="{% if info.parent_id %}{{ info.parent_id }}{% else %}{{''}}{% endif %}"/></td>
+                                    </tr>
+                                {% endif %}
+                                {% if info.article_id %}
+                                    <tr>
+                                        <td>文章ID</td>
+                                        <td><input type="text" readonly="readonly" id="article_id" value="{% if info.article_id %}{{ info.article_id }}{% else %}{{''}}{% endif %}"/></td>
+                                    </tr>
+                                {% endif %}
+                                <tr>
+                                    <td>文章作者</td>
+                                    <td><input type="text" id="author" value="{% if info.author %}{{ info.author }}{% else %}{{''}}{% endif %}"/></td>
+                                </tr>
+                                <tr>
+                                    <td>文章来源</td>
+                                    <td><input type="text" id="source" value="{% if info.source %}{{ info.source }}{% else %}{{''}}{% endif %}"/></td>
+                                </tr>
+                                <tr>
+                                    <td>文章发布时间</td>
+                                    <td>
+                                        <input type="text" id="save_timestamp" value="{{ info.save_timestamp }}" class="il_block w_center align_left" onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')"></input>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>文章状态</td>
+                                    <td>
+                                        <input type="radio" style="width:5%;" name="status" value="1" {% ifequal info.status 1 %}{{ "checked" }}{% endifequal %}>未发布</input>
+                                        <input type="radio" style="width:5%;" name="status" value="3"{% ifequal info.status 3 %}{{ "checked" }}{% endifequal %}>已发布</input>
+                                    </td>
+                                </tr>
+                                {% if info.game_id %}
+                                    <tr>
+                                        <td>文章所属游戏</td>
+                                        <span style="font-size:15px;">[[{{ vari.vari_name }}]]</span>
+                                        <td><span>游戏ID</span><input type="text" readonly="readonly" id="game_id" value="{% if info.game_id %}{{ info.game_id }}{% else %}{{''}}{% endif %}"/>
+                                            <span>游戏名</span><input type="text" readonly="readonly" id="game_name" value="{% if info.game_name %}{{ info.game_name }}{% else %}{{''}}{% endif %}"/>
+                                            <span>游戏详情页</span><input type="text" readonly="readonly" id="" value="http://www.ggzs.me/game/detail/{{ info.game_id }}.html"/>
+                                            <span>游戏下载地址</span><input type="text" readonly="readonly" id="download_url" value="{% if info.download_url %}{{ info.download_url }}{% else %}{{''}}{% endif %}"/>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td>文章所属游戏</td>
+                                        <td>
+                                            <a href="javascript:void(0)" localid="1" class="btn btn-default showgame" role="button"><i class="glyphicon glyphicon-plus"></i>添加游戏</a><font style="font-size:20px;color:red">{% if desc %}{{ desc }}{% endif %}</font>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                                <tr id="game_game_id">
+                                </tr>
+                                <tr id="game_game_name">
+                                </tr>
+                                <tr id="game_detail_url">
+                                </tr>
+                                <tr id="game_download_url">
+                                </tr>
+                                <tr id="game_icon_url">
+                                </tr>
+                                <tr id="game_detail_desc">
+                                </tr>
+                                <tr id="game_screen_shot_urls">
+                                </tr>
+                                {% ifequal article_type 1 %}
+                                    {% if not info.game_id %}
+                                        <tr>
+                                            <td>文章标题模板</td>
+                                            <td>
+                                                <table style="border: 0; margin: 0; padding: 0;" frame="void" width="100%">
+                                                    <tr>
+                                                        <td style="border: 0">
+                                                            {% for tem in templates %}
+                                                                {% ifequal tem.3 template_type %}
+                                                                    {% ifequal template_id tem.0 %}
+                                                                        <input type="text" style="width:400px" id="title_template" value="{{ tem.1 }}"/>
+                                                                    {% endifequal %}
+                                                                {% endifequal %}
+                                                            {% endfor %}
+                                                        <td width="40%" style="border:0" align="right">
+                                                            <table style="border: 0; margin: 0; padding: 0;" frame="void">
+                                                                {% for vari in vari_list %}
+                                                                    <tr>
+                                                                        <td style="border:0">
+                                                                            {% if vari.vari_id %}
+                                                                                <span style="font-size:15px;">[[{{ vari.vari_name }}]]</span>
+                                                                                <select id="{{ vari.vari_id }}" style="width:150px">
+                                                                                    {% for vari_info in vari_infos %}
+                                                                                        {% ifequal vari_info.vari_name vari.vari_name %}
+                                                                                            <option value="{{ vari_info.id }}">{{ vari_info.value }}</option>
+                                                                                        {% endifequal %}
+                                                                                    {% endfor %}
+                                                                                </select>
+                                                                            {% endif %}
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>文章模板</td>
+                                            <td>
+                                                <table style="border: 0; margin: 0; padding: 0;" frame="void" width="100%">
+                                                    <tr>
+                                                        <td width="60%" style="border:0">
+                                                            {% for tem in templates %}
+                                                                {% ifequal template_id tem.0 %}
+                                                                    <textarea style="width:80%;height:300px;"
+                                                                              id="content_template" rows="12" cols="140"
+                                                                              class="required" tabindex="4">{{ tem.2 }}</textarea>
+                                                                {% endifequal %}
+                                                            {% endfor %}
+                                                        </td>
+                                                        <td width="40%" style="border:0" align="right">
+                                                            <table style="border: 0; margin: 0; padding: 0;" frame="void">
+                                                                {% for vari in content_list %}
+                                                                    <tr>
+                                                                        <td style="border:0">
+                                                                            {% if vari.vari_id %}
+                                                                                <span style="font-size:15px;">[[{{ vari.vari_name }}]]</span>
+                                                                                <select id="{{ vari.vari_id }}" style="width:150px">
+                                                                                    {% for vari_info in vari_infos %}
+                                                                                        {% ifequal vari_info.vari_name vari.vari_name %}
+                                                                                            <option value="{{ vari_info.id }}">{{ vari_info.value }}</option>
+                                                                                        {% endifequal %}
+                                                                                    {% endfor %}
+                                                                                </select>
+                                                                            {% endif %}
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endifequal %}
+                                <tr>
+                                    <td>文章标题</td>
+                                    <td><input type="text" id="title" style="width:400px" value="{% if info.title %}{{ info.title }}{% else %}{{''}}{% endif %}"/></td>
+                                </tr>
+                                <tr>
+                                    <td>文章短标题</td>
+                                    <td><input type="text" id="short_title" style="width:400px" value="{% if info.short_title %}{{ info.short_title }}{% else %}{{''}}{% endif %}"/></td>
+                                </tr>
+                                {% if not info.game_id %}
+                                    {% ifequal article_type 1 %}
+                                        <tr>
+                                            <td></td>
+                                            <td><input
+                                                    style="width:140px;background:#0099ff;color:#ffffff"
+                                                    type="button" id="label-btn"
+                                                    onclick="preview()"
+                                                    value="生成文章预览">
+                                            </td>
+                                        </tr>
+                                        <!--tr>
+                            <td>文章临时内容</td>
+                                    <td><textarea style="width:80%;height:300px;"
+                                    id="preview_content" readonly="readonly" rows="12" cols="140"
+                                    class="required" tabindex="4"></textarea>
+                            </td>
+                        </tr-->
+                                    {% endifequal %}
+                                {% endif %}
+                                <tr>
+                                    <td>文章内容</td>
+                                    <td>
+                                        <textarea id="content" name='article_editor' rows="4" class="form-control">{{ info.content }}</textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="save_article" value="保存文章信息">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="vari_info_ids" value="">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+ 
+    <!-- 浮层html -->
+    <div class="showbox">
+        <h2>选择游戏<a class="close" href="#">关闭</a></h2>
+        <div class="mainlist">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div class="box-body">
+                                        <label>游戏名</label>
+                                    </div><!-- /.box-body -->
+                                </div><!--/.col-xs -->
+                                <div class="col-lg-10">
+                                    <div class="box-body">
+                                        <input type='text' id='form_game_name' value=''/>
+                                    </div><!-- /.box-body -->
+                                </div><!--/.col-xs -->
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" id='appname' name='' value="" placeholder="输入app名称" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-10">
+                                    <div name="sm_category" id="sm_cat">
+                                        <!--div name="sm_category" id="sm_cat" style='width:100%;height:300px;border:1px solid #ccc;border-radius:5px;margin-bottom:10px;overflow:hidden;overflow-y:scroll; overflow-x:scroll;'-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+            <div role="tabpanel" class="tab-pane active" id="fl_zy">
+                <div class="modal-footer" style="margin-top:0px;">
+                    <button class="btn btn-info btn-flat" type="button" id="add_article_game">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="zhezhao"></div>
+
+{% endblock %}
+
+{% block extrajs %}
+
+    <script type="text/javascript">
+        var article_editor=CKEDITOR.replace('article_editor');
+    </script>
+    <script type="text/javascript">
+        $("#add_article_game").click(function(){
+            var game_id = "";
+            $('input[type="radio"][name="game"]:checked').each(function(){
+                game_id = $(this).val();
+            });
+            var game_name = $("#form_game_name").val();
+            var descJson = {};
+//    var game_id = $("#game_id").val();
+//    var game_name = $("#game_name").val();
+            var title_template = $("#title_template").val();
+            var content_template = $("#content_template").val();
+            var template_id = $("#template_id").val();
+            descJson['game_id'] = game_id;
+            descJson['game_name'] = game_name;
+            descJson['title_template'] = title_template;
+            descJson['content_template'] = content_template;
+            descJson['template_id'] = template_id;
+            var jsons = {{ jsons|safe }};
+            var vari_list = jsons.vari_list;
+            var content_list = jsons.content_list;
+            for (var i=0; i<vari_list.length; i++) {
+                var vari = vari_list[i];
+                var select_id = vari.vari_id;
+                var vari_name = vari.vari_name;
+                if (select_id) {
+                    descJson[select_id] = $("#"+select_id).val();
+                }
+            }
+            for (var i=0; i<content_list.length; i++) {
+                var vari = content_list[i];
+                var select_id = vari.vari_id;
+                var vari_name = vari.vari_name;
+                if (select_id) {
+                    descJson[select_id] = $("#"+select_id).val();
+                }
+            }
+        alert(JSON.stringify(descJson));
+            if (game_id && game_name){
+                $.post('/gg_mgmt/article/preview/', descJson, function(result){
+                    resJson = $.parseJSON(result);
+                    $("#content").val(resJson.content);
+                    $("#title").val(resJson.title);
+                    $("#vari_info_ids").val(resJson.vari_info_ids);
+                    var td = '<td>所属游戏id</td><td><input type="text" id="game_id" value="'+resJson.game_id+'"/></td>'
+                    $("#game_game_id").html(td);
+                    var td = '<td>所属游戏详情页地址</td><td><input style="width: 600px" type="text" id="" value="http://www.ggzs.me/game/detail/'+resJson.game_id+'.html"/></td>'
+                    $("#game_detail_url").html(td);
+                    var td = '<td>所属游戏下载地址</td><td><input style="width: 600px" type="text" id="" value="'+resJson.download_url+'"/></td>'
+                    $("#game_download_url").html(td);
+                    var td = '<td>所属游戏名</td><td><input type="text" id="game_name" value="'+resJson.game_name+'"/></td>'
+                    $("#game_game_name").html(td);
+                    var td = '<td>所属游戏icon</td><td><img width="75px" src="'+resJson.game_icon_url+'">'+resJson.game_icon_url+'</td>'
+                    $("#game_icon_url").html(td);
+                    var td = '<td>所属游戏描述</td><td>'+resJson.game_detail_desc+'</td>'
+                    $("#game_detail_desc").html(td);
+                    var td = '<td>所属游戏截图</td><td>'
+                    var strs = new Array();
+                    strs = resJson.game_screen_shot_urls.split(',');
+                    for (i=0; i<strs.length; i++){
+                        td += '<p><img width="75px" src="'+strs[i]+'">'+strs[i]+'</p>'
+                    }
+                    td += '</td>'
+                    $("#game_screen_shot_urls").html(td);
+                });
+            } else {
+                alert('请输入游戏ID和游戏名！！！');
+            }
+        });
+    </script>
+    <script type="text/javascript">
+//添加游戏的浮层
+$(".showgame").click(function(){
+    var localid = $(this).attr("localid");
+    var id = localid.replace(/[^0-9]/ig,"");
+    $("input[name=type]").val(id);
+    var box =500;
+    var th= $(window).scrollTop()+$(window).height()/1.6-box;
+    var h =document.body.clientHeight;
+    var rw =$(window).width()/2-box;
+    $(".showbox").animate({top:40,opacity:'show',width:800,height:600,right:rw},500);
+    $("#zhezhao").css({
+        display:"block",height:$(document).height()
+    });
+    return false;
+});
+$(".showbox .close").click(function(){
+    $(this).parents(".showbox").animate({top:0,opacity: 'hide',width:0,height:0,right:0},500);
+    $("#zhezhao").css("display","none");
+});
+//  $(function(){
+$("#appname").keyup(function(){
+    var keyword = $(this).val();
+    console.log(keyword);
+    $.ajax({
+        type: 'post',
+        url: '/gg_mgmt/article/game/search/',
+        data: {
+            keyword: keyword,
+            csrfmiddlewaretoken:'{{ csrf_token }}'
+        },
+        dataType: 'html',
+        success:function(games){
+            var div='';
+            //  div +="<span>游戏名</span><input type='text' id='form_game_name' value=''/>"
+            if(games){
+                var games = eval('('+games+')');
+                $.each(games, function(k,v){
+                    div +="<div class='col-lg-6'><div class='input-group'><label class='input-group'><span class='input-group-addon'><input type='radio' id='form_game_id' name='game' value='"+ games[k][0] +"'></span><button type='button' class='btn btn-default btn-block'>"+ games[k][1]+"</button></label></div></div>";
+ 
+                })
+                $("#sm_cat").html(div);
+            }else{
+                div="<div style='color:red;width:100%;height:100px;font-size:18px;line-height:100px;text-align:center;'>暂无相关应用</div>";
+                $("#sm_cat").html(div);
+            }
+        }
+    });
+});
+//   });
+    </script>
+    <script type="text/javascript">
+        $("#article_type").change(function(){
+            var article_type = $("#article_type").val();
+            var author = $("#author").val();
+            var source = $("#source").val();
+            var save_timestamp = $("#save_timestamp").val();
+            var article_status = "";
+            $('input[type="radio"][name="status"]:checked').each(function(){
+                article_status = $(this).val();
+            });
+            window.location.href = '/gg_mgmt/article/add/?article_type='+article_type+'&author='+author+'&source='+source+'&save_timestamp='+save_timestamp+'&article_status='+article_status;
+        });
+        $("#template_type").change(function(){
+            var article_type = $("#article_type").val();
+            var template_type = $("#template_type").val();
+            window.location.href = '/gg_mgmt/article/add/?article_type='+article_type+'&template_type='+template_type;
+        });
+        $("#template_id").change(function(){
+            var article_type = $("#article_type").val();
+            var template_type = $("#template_type").val();
+            var template_id = $("#template_id").val();
+            window.location.href = '/gg_mgmt/article/add/?article_type='+article_type+'&template_type='+template_type+'&template_id='+template_id;
+        });
+    </script>
+    <script type="text/javascript">
+//function save_article(){
+$("#save_article").click(function(){
+    var descJson = {};
+    var article_id = $("#article_id").val();
+    var game_id = $("#game_id").val();
+    var game_name = $("#game_name").val();
+    var title = $("#title").val();
+    var short_title = $("#short_title").val();
+    var author = $("#author").val();
+    var source = $("#source").val();
+    var article_status = "";
+    $('input[type="radio"][name="status"]:checked').each(function(){
+        article_status = $(this).val();
+    });
+    var article_type = $("#article_type").val();
+    var content = article_editor.document.getBody().getHtml();;
+    //var content = article_editor.document.getBody().getText();;
+    var template_id = $("#template_id").val();
+    var save_timestamp = $("#save_timestamp").val();
+    var parent_id = $("#parent_id").val();
+    var vari_info_ids = $("#vari_info_ids").val();
+    descJson['article_id'] = article_id;
+    descJson['game_id'] = game_id;
+    descJson['game_name'] = game_name;
+    descJson['title'] = title;
+    descJson['short_title'] = short_title;
+    descJson['author'] = author;
+    descJson['source'] = source;
+    descJson['status'] = article_status;
+    descJson['article_type'] = article_type;
+    descJson['content'] = content;
+    descJson['template_id'] = template_id;
+    descJson['save_timestamp'] = save_timestamp;
+    descJson['parent_id'] = parent_id;
+    descJson['vari_info_ids'] = vari_info_ids;
+//    alert(JSON.stringify(descJson));
+    if (author && source && save_timestamp && article_status && short_title && content && title && game_id){
+        $.post('/gg_mgmt/article/save/', descJson, function(result){
+            alert(result);
+            window.location.href = '/gg_mgmt/article/info/';
+        });
+    } else {
+        alert('请补充完整文章信息！！！');
+    }
+});
+    </script>
+    <script type="text/javascript">
+//生成文章预览
+function preview(){
+    var descJson = {};
+    var game_id = $("#game_id").val();
+    var game_name = $("#game_name").val();
+    var title_template = $("#title_template").val();
+    var content_template = $("#content_template").val();
+    var template_id = $("#template_id").val();
+    descJson['game_id'] = game_id;
+    descJson['game_name'] = game_name;
+    descJson['title_template'] = title_template;
+    descJson['content_template'] = content_template;
+    descJson['template_id'] = template_id;
+    var jsons = {{ jsons|safe }};
+    var vari_list = jsons.vari_list;
+    var content_list = jsons.content_list;
+    for (var i=0; i<vari_list.length; i++) {
+        var vari = vari_list[i];
+        var select_id = vari.vari_id;
+        var vari_name = vari.vari_name;
+        if (select_id) {
+            descJson[select_id] = $("#"+select_id).val();
+        }
+    }
+    for (var i=0; i<content_list.length; i++) {
+        var vari = content_list[i];
+        var select_id = vari.vari_id;
+        var vari_name = vari.vari_name;
+        if (select_id) {
+            descJson[select_id] = $("#"+select_id).val();
+        }
+    }
+      //  alert(JSON.stringify(descJson));
+    if (game_id && game_name){
+        $.post('/gg_mgmt/article/preview/', descJson, function(result){
+            resJson = $.parseJSON(result);
+            //$("#preview_content").val(resJson.content);
+            article_editor.setData(resJson.content);
+            $("#title").val(resJson.title);
+            $("#vari_info_ids").val(resJson.vari_info_ids);
+        });
+    } else {
+        alert('请输入游戏ID和游戏名！！！');
+    }
+}
+    </script>
+    <script type="text/javascript" src="/gg_mgmt/static/js/adddate.js"></script>
+{% endblock %}

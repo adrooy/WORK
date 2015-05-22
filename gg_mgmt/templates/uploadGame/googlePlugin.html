@@ -1,0 +1,61 @@
+{% extends "header.html" %}
+
+{% block title %}GooglePlay插件资料{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <aside class="side">
+
+        <!-- Main content -->
+
+        <section class="content">
+            <div class="col-md-10">
+                <table class="table table-bordered">
+                    <th style="width:20%"></th>
+                    <th style="width:80%"></th>
+                    <tbody>
+                        <tr>
+                            <td>游戏包名</td>
+                            <td><input style="width:90%" type="text" id="pkg_name"/></td>
+                        </tr>
+                        <tr>
+                            <td>游戏版本号</td>
+                            <td><input style="width:90%" type="text" id="ver_code"/></td>
+                        </tr>
+                        <tr>
+                            {% ifequal perm_name '可编辑用户' %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="addGooglePlugin" value="同步GooglePlay插件"></td>
+                            {% endifequal %}
+                            {% ifequal user.is_superuser 1 %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="addGooglePlugin" value="同步GooglePlay插件"></td>
+                            {% endifequal %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    </aside><!-- /.right-side -->
+
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+$("#addGooglePlugin").click(function(){
+    var pkg_name = $("#pkg_name").val();
+    var ver_code = $("#ver_code").val();
+    var descJson = {};
+    descJson['pkg_name'] = pkg_name;
+    descJson['ver_code'] = ver_code;
+    if(pkg_name && ver_code){
+alert("正在入库！！！");
+        $.post('/gg_mgmt/uploadGame/addGooglePlugin/', descJson, function(result){
+            window.location.href = '/gg_mgmt/prompt/?msg='+result;
+        });
+    }else{
+        alert("请输入游戏资料！！！");
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "header.html" %}
+
+{% block title %}发布{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <aside class="side">
+
+        <!-- Main content -->
+
+        <section class="content">
+            <div class="col-md-10">
+                <table class="table table-bordered">
+                    <tbody>
+                        {%ifequal msg ''%}
+                        <tr>
+                            <td><h1>把后台所有数据的修改发布到客户端(专题，游戏，banner的增减；各个渠道的游戏，插件的增加)</h1></td>
+                        </tr>
+                        <tr>
+                            {% ifequal perm_name '可编辑用户' %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="releaseData" value="发布"></td>
+                            {% endifequal %}
+                            {% ifequal user.is_superuser 1 %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="releaseData" value="发布"></td>
+                            {% endifequal %}
+                        </tr>
+                        {%else%}
+                             <td><h1>{{msg}}</h1></td>
+                        {%endifequal%}
+                    </tbody>
+                </table>
+            </div>
+
+    </aside><!-- /.right-side -->
+
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+$(document).ready(function(){
+    var code = ""; //在全局 定义验证码   
+    var codeLength = 4;//验证码的长度   
+    var checkCode = document.getElementById("checkCode");   
+    var selectChar = new Array(0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','wW','x','y','z');//所有候选组成验证码的字符，当然也可以用中文的   
+    for(var i=0;i<codeLength;i++)   
+    {   
+        var charIndex = Math.floor(Math.random()*36);   
+        code +=selectChar[charIndex];   
+    }   
+    $("#code").val(code);
+});
+$("#releaseData").click(function(){
+    var descJson = {};
+    $("#releaseData").css("visibility", "hidden");
+    $.post('/gg_mgmt/release/releaseData/', descJson, function(result){
+        alert(result);
+        window.location.reload();       
+        $("#releaseData").css("visibility", "visible");
+    });
+});
+</script>
+{% endblock %}

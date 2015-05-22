@@ -1,0 +1,168 @@
+{% extends "base/base.html" %}
+
+{% block title %}游戏厂商管理{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+     
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <button onclick="add_dev()" class="btn btn-info btn-flat" type="button">新增游戏厂商</button>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+        </section><!-- /.content -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <label>Top厂商列表</label>
+                            <table id="example1" class="table table-bordered table-striped" aria-describedby="example1_info">
+                                <thead>
+                                <tr>
+                                    <th>厂商ID</th>
+                                    <th>厂商名</th>
+                                    <th>ICON</th>
+                                    <th>厂商排列序号</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for top_developer in top_developers %}
+                                    <tr>
+                                        <td>{{ top_developer.id }}</td>
+                                        <td>
+                                            <a href="{% url 'developer_game_list' top_developer.developer %}">{{ top_developer.developer }}</a>
+                                        </td>
+                                        <td><img style="width:75px;height:75px;" src="{{ top_developer.icon_url }}"></td>
+                                        <td>{{ top_developer.manual_num }}</td>
+                                        <td>
+                                            <button onclick="edit_dev({{ top_developer.id }})" class="btn btn-info btn-flat" type="button">编辑信息</button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table id="example2" class="table table-bordered table-striped" aria-describedby="example1_info">
+                                <thead>
+                                <tr>
+                                    <th>序号ID</th>
+                                    <th>厂商名</th>
+                                    <th>ICON</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for list in infos %}
+                                    <tr>
+                                        <td style="width: 1%">{{list.id}}</td>
+                                        <td style="width: 5%">
+                                            <a href="{% url 'developer_game_list' list.developer %}">{{ list.developer }}</a>
+                                        </td>
+                                        <td style="width: 5%"><img style="width:75px;height:75px;" src="{{ top_developer.icon_url }}"></td>
+                                        <td style="width: 10%">
+                                            <button onclick="edit_dev({{ list.id }})" class="btn btn-info btn-flat" type="button">编辑信息</button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+　
+{% block extrajs %}
+    <script type="text/javascript">
+
+        function add_dev() {
+            var developer_id = ''
+            window.location.href = "{% url 'developer_add' %}";
+        }
+        function del_dev(dev_id) {
+            if(dev_id) {
+                var descJson = {};
+                descJson['dev_id'] = dev_id;
+                $.post("{% url 'developer_delete' %}", descJson, function(result){
+                    alert(result);
+                    window.location.href = "{% url 'developer_index' %}";
+                });
+            } else {
+                alert("删除出错");
+            }
+        }
+        function edit_dev(developer_id) {
+            window.location.href = '/gg_mgmt/developer/add/?developer_id='+developer_id;
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#example1").dataTable({
+                "bPaginate": true,
+                "bLengthChange": true,
+                "bFilter": true,
+                "bSort": false,
+                "bInfo": true,
+                "bAutoWidth": true,
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "抱歉， 没有找到",
+                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                    "sInfoEmpty": "没有数据",
+                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "前一页",
+                        "sNext": "后一页",
+                        "sLast": "尾页"
+                    },
+                    "sZeroRecords": "没有检索到数据"
+                }
+            });
+            $("#example2").dataTable({
+                "bPaginate": true,
+                "bLengthChange": true,
+                "bFilter": true,
+                "bSort": false,
+                "bInfo": true,
+                "bAutoWidth": true,
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "抱歉， 没有找到",
+                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                    "sInfoEmpty": "没有数据",
+                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "前一页",
+                        "sNext": "后一页",
+                        "sLast": "尾页"
+                    },
+                    "sZeroRecords": "没有检索到数据"
+                }
+            });
+        });
+    </script>
+{% endblock %}

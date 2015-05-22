@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-xs-6">
+        <div class="dataTables_info" id="example1_info">共 {{ count }} 条数据</div>
+    </div>
+    <div class="col-xs-6">
+        <div class="dataTables_paginate paging_bootstrap">
+            <ul class="pagination">
+                {% if infos.has_previous %}
+                    <li class="prev">
+                        <a href="?pn={{ infos.previous_page_number }}&pr={{ per_page }}&source_id={{ source }}&status={{ status }}&sort_key={{sort_key}}&user_name={{user_name}}&page={{page}}">← 前一页</a>
+                    </li>
+                {% else %}
+                    <li class="prev disabled">
+                        <a>←上一页</a>
+                    </li>
+                {% endif %}
+                {% for p in page_range %}
+                    {% ifequal p infos.number %}
+                        <li class="active"><a>{{ p }}</a></li>
+                    {% else %}
+                        <li>
+                            <a href="?pn={{ p }}&pr={{ per_page }}&source_id={{ source }}&status={{ status }}&sort_key={{sort_key}}&user_name={{user_name}}&page={{page}}">{{ p }}</a>
+                        </li>
+                    {% endifequal %}
+                {% endfor %}
+                {% if infos.has_next %}
+                    <li class="next">
+                        <a href="?pn={{ infos.next_page_number }}&pr={{ per_page }}&source_id={{ source }}&status={{ status }}&sort_key={{sort_key}}&user_name={{user_name}}&page={{page}}">后一页 → </a>
+                    </li>
+                {% else %}
+                    <li class="next disabled">
+                        <a>下一页→ </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

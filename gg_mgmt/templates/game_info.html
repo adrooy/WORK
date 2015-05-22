@@ -1,0 +1,149 @@
+{% extends 'base/base.html' %}
+
+{% load filter_extras %}
+
+{% block title %}游戏列表页展示{% endblock %}
+
+{% block content %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>广告渠道</label>
+                                <select class="form-control" id="channel">
+                                    {% for ch in channels %}
+                                        {% ifequal ch.id channel %}
+                                            <option value="{{ ch.id }}" selected="selected">{{ ch.name }}</option>
+                                        {% else %}
+                                            <option value="{{ ch.id }}">{{ ch.name }}</option>
+                                        {% endifequal %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>广告位置</label>
+                                <select class="form-control" id="type">
+                                    {% ifequal type '0' %}
+                                        <option value="0" selected="selected">所有位置广告</option>
+                                        {% for tp in types %}
+                                            <option value="{{ tp.id }}">{{ tp.name }}</option>
+                                        {% endfor %}
+                                    {% else %}
+                                        <option value="0">所有位置广告</option>
+                                        {% for tp in types %}
+                                            {% ifequal tp.id type %}
+                                                <option value="{{ tp.id }}" selected="selected">{{ tp.name }}</option>
+                                            {% else %}
+                                                <option value="{{ tp.id }}">{{ tp.name }}</option>
+                                            {% endifequal %}
+                                        {% endfor %}
+                                    {% endifequal %}
+                                </select>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+        </section><!-- /.content -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table id="example1" class="table table-bordered table-striped" aria-describedby="example1_info">
+                                <thead>
+                                <tr>
+                                    <th>显示名</th>
+                                    <th>游戏ID</th>
+                                    <th>来源</th>
+                                    <!--th>ICON</th>
+                        <th>角标</th>
+                        <th>彩标</th>
+                        <th>类型</th>
+                        <th>实际总下载数</th>
+                        <th>实际周下载数</th>
+                        <th>入库时间</th>
+                        <th>语言</th>
+                        <th>开发商</th-->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for info in infos %}
+                                    <tr>
+                                        <td>{{ info.display_name }}</td>
+                                        <td>{{ info.game_id }}</td>
+                                        <td>{{ info.source }}</td>
+                                        <!--td></td>
+                        <td><a href="/gg_mgmt/ad/edit/?id={{ info.id }}&channel={{ info.channel }}"><img style="width:75px;height:75px;" src="{{ info.pic_url }}"></a></td>
+                        <td>{{ info.order_num }}</td>
+                        <td>
+                          {% ifnotequal type '0' %}
+                          {% if not forloop.first %}
+                          <button class="btn btn-info btn-flat" type="button" onclick="move_up('{{ info.id }}')"><i class="fa fa-fw fa-arrow-up"></i>上移</button>
+                          {% endif %}
+                          {% if not forloop.last %}
+                          <button class="btn btn-info btn-flat" type="button" onclick="move_down('{{ info.id }}')"><i class="fa fa-fw fa-arrow-down"></i>下移</button>
+                          {% endif %}
+                          {% endifnotequal %}
+                          <button class="btn btn-info btn-flat" type="button" onclick="del_iplay_ad('{{ info.id }}')">删除</button>
+                        </td-->
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        $(function () {
+            $("#example1").dataTable({
+                "bPaginate": true,
+                "bLengthChange": true,
+                "bFilter": true,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": true,
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "抱歉， 没有找到",
+                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                    "sInfoEmpty": "没有数据",
+                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "前一页",
+                        "sNext": "后一页",
+                        "sLast": "尾页"
+                    },
+                    "sZeroRecords": "没有检索到数据"
+                }
+            });
+        });
+    </script>
+{% endblock %}

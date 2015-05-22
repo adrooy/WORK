@@ -1,0 +1,12 @@
+{% extends "header.html" %}
+{% block content %}
+{%ifequal msg 'uploadGame'%}
+<h1>请去<a href="/gg_mgmt/uploadGame/uploadGame/">游戏入库记录</a>页查看游戏入库状态，入库完成后：</h1>
+{%else%}
+<h1>{{msg}}</h1>
+{%endifequal%}
+<br>
+<h1>请去<a href="/gg_mgmt/release/release/">发布</a>页点击发布按钮发布</h1>
+{% endblock %}
+
+

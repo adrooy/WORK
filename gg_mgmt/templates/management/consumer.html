@@ -1,0 +1,87 @@
+{% extends "base/base.html" %}
+
+{% block title %}内测用户申请{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <th>IMEI</th>
+                                <th>申请人姓名</th>
+                                <th>设备信息</th>
+                                <th>操作</th>
+                                {% for list in infos %}
+                                    <tr>
+                                        <td id="imei">{%if list.imei%}{{list.imei}}{% endif %}</td>
+                                        <td id="user_name">{%if list.name%}{{list.name}}{% endif %}</td>
+                                        <td style="width: 4%;line-height:100%">
+                                            <p style="margin:0px; padding:0px;">vendor：{%if list.vendor%}{{list.vendor}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px;">model：{%if list.model%}{{list.model}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="">fingerprint: {%if list.fingerprint%}{{list.fingerprint}}{%else%}{{''}}{%endif%}</p>
+                                            <p style="">SDK版本信息：{%if list.sdk%}{{list.sdk}}{%else%}{{''}}{%endif%}</p>
+                                            <p style="margin:0px; padding:0px;">屏幕宽度：{%if list.widthpixels%}{{list.widthpixels}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px;">屏幕高度：{%if list.heightpixels%}{{list.heightpixels}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px;">设备像素密度: {%if list.density%}{{list.density}}{%else%}{{''}}{%endif%}</p>
+                                            　　　　　　　　　　　　　　　　<p style="margin:0px; padding:0px;">联系方式: {%if list.contact%}{{list.contact}}{%else%}{{''}}{%endif%}</p>
+                                        </td>
+                                        <td style="width: 10%">
+                                            {% ifequal perm_name '可编辑用户' %}
+                                                {% ifequal list.status 0 %}
+                                                    <button onclick="add_imei(['{{ list.imei }}', '{{ list.name }}'])" class="btn btn-info btn-flat" type="button">批准</button>
+                                                {% else %}
+                                                    已通过
+                                                {% endifequal %}
+                                            {% endifequal %}
+                                            {% ifequal user.is_superuser 1 %}
+                                                {% ifequal list.status 0 %}
+                                                    <button onclick="add_imei(['{{ list.imei }}', '{{ list.name }}'])" class="btn btn-info btn-flat" type="button">批准</button>
+                                                {% else %}
+                                                    已通过
+                                                {% endifequal %}
+                                            {% endifequal %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            {% include "base/pagination.html" %}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        function add_imei(imei_array) {
+            var imei = imei_array[0];
+            var user_name = imei_array[1];
+            var descJson = {};
+            alert(imei);
+            alert(user_name);
+            descJson['imei'] = imei;
+            descJson['user_name'] = user_name;
+            if(imei && user_name) {
+                $.post("{% url 'imei_add' %}", descJson, function(result){
+                    if (result = 'yes'){
+                        window.location.href = "{% url 'imei_index' %}";
+                    }else{
+                        alert("手机imei已经添加过了！！！");
+                    }
+                });
+            } else {
+                alert("手机imei不能为空");
+            }
+        }
+    </script>
+    <script type="text/javascript" src="/gg_mgmt/static/js/adddate.js" ></script>
+{% endblock %}

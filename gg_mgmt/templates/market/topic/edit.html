@@ -1,0 +1,124 @@
+{% extends "base/base.html" %}
+{% block title %}专题编辑{% endblock %}
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+{% block content %}
+
+       <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <th style="width: 20%">基本信息</th>
+                                <th style="width: 80%">内容</th>
+                                <tbody>
+                                {% if topic.id %}
+                                <tr>
+                                    <td>专题ID</td>
+                                    <td><input type="text" id="topic_id" value="{{ topic.id }}"></td>
+                                </tr>
+                                {% endif %}
+                                <tr>
+                                    <td>专题名</td>
+                                    <td><input type="text" id="topic_name" value="{{ topic.name }}"></td>
+                                </tr>
+                                <tr>
+                                    <td>专题序号</td>
+                                    <td><input type="text" id="topic_order_num" value="{{ topic.order_num }}"></td>
+                                </tr>
+                                <tr>
+                                    <td>专题简单描述</td>
+                                    <td><input type="text" id="topic_short_desc" value="{{ topic.short_desc }}"></td>
+                                </tr>
+                                <tr>
+                                    <td>专题详细描述</td>
+                                    <td><input type="text" id="topic_detail_desc" value="{{ topic_detail_desc }}"></td>
+                                </tr>
+                                <tr>
+                                    <td>专题图片</td>
+                                    <td><img style="width:150px;height:75px;" src="{{ topic.pic_url }}"><input type="text" id="topic_pic_url" value="{{ topic.pic_url }}" style="width: 400px"></td>
+                                </tr>
+                                <tr>
+                                    <td>发布时间</td>
+                                    <td><input type="text" id="topic_date" value="{{ topic.topic_date }}" onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')"></td>
+                                </tr>
+                                <tr>
+                                    <td>下线时间</td>
+                                    <td><input type="text" id="unrelease_date" value="{{ topic.unrelease_date }}" onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')"></td>
+                                </tr>
+                                <tr>
+                                    <td><button id="banner_edit" class="btn btn-info btn-flat" type="button">保存信息</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <input type="radio" name="not_test" value="0"{% ifequal topic.not_test 0 %}{{ "checked" }}{% endifequal %}>只提供给测试手机客户端</input>
+                                    <input type="radio" name="not_test" value="1"{% ifequal topic.not_test 1 %}{{ "checked" }}{% endifequal %}>提供给所有的客户端</input>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+
+    <div style="width:100%;height:35%;overflow:scroll;align:center;">
+        <table border="1" id="senfe" cellspacing="0" width="80%" align="center">
+            <caption>该专题下的游戏列表</caption>
+            <thead>
+                <tr>
+                    <th width="20%">游戏名</th>
+                    <th width="20%">序号</th>
+                    <th width="20%">游戏ID</th>
+                    <th width="20%">专题ID</th>
+                    <th width="10%">游戏状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                {% ifequal game.game_id game_id %}
+                <tr id="game" value="{{ game.game_id }}" class="highlight">
+                {% else %}
+                <tr id="game" value="{{ game.game_id }}">
+                {% endifequal %}
+                    <td colspan="1"><a href="/gg_mgmt/game/detail/?game_id={{ game.game_id }}">{{ game.game_name }}</a></td>
+                    <td colspan="1">{{ game.order_num }}</td>
+                    <td colspan="1">{{ game.game_id }}</td>
+                    <td colspan="1">{{ game.topic_id }}</td>
+                    <td colspan="1">{{ game.enabled }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% ifequal perm_name '可编辑用户' %}
+    <div style="height:5%;margin-bottom:2%;margin-top:2%">
+    <input type="button" id="game_add" value="增加游戏" class="submit_button"></input> 
+    <input type="button" id="game_delete" value="删除游戏" class="submit_button"></input> 
+    <input type="button" id="game_up" value="游戏位置上移" class="submit_button"></input> 
+    <input type="button" id="game_down" value="游戏位置下移" class="submit_button"></input> 
+    <input type="button" id="game_move" value="移动到指定位置" class="submit_button"></input> 
+    <input type="button" id="game_detail" value="查看游戏详情" class="submit_button"></input> 
+    </div>
+    {% endifequal %}
+    {% ifequal user.is_superuser 1 %}
+    <div style="height:5%;margin-bottom:2%;margin-top:2%">
+    <input type="button" id="game_add" value="增加游戏" class="submit_button"></input> 
+    <input type="button" id="game_delete" value="删除游戏" class="submit_button"></input> 
+    <input type="button" id="game_up" value="游戏位置上移" class="submit_button"></input> 
+    <input type="button" id="game_down" value="游戏位置下移" class="submit_button"></input> 
+    <input type="button" id="game_move" value="移动到指定位置" class="submit_button"></input> 
+    <input type="button" id="game_detail" value="查看游戏详情" class="submit_button"></input> 
+    </div>
+    {% endifequal %}
+
+{% endblock %}
+{% block extrajs %}
+    <script type="text/javascript" src="/gg_mgmt/static/js/iplay.js"></script>
+    <script type="text/javascript" src="/gg_mgmt/static/js/adddate.js" ></script>
+{% endblock %}

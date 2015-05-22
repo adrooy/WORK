@@ -1,0 +1,70 @@
+{% extends "header.html" %}
+
+{% block title %}论坛游戏资料{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <aside class="side">
+
+        <!-- Main content -->
+
+        <section class="content">
+            <div class="col-md-10">
+                <table class="table table-bordered">
+                    <th style="width:20%"></th>
+                    <th style="width:80%"></th>
+                    <tbody>
+                        <tr>
+                            <td>验证码</td>
+                            <td><input style="width:90%" type="text" id="code" readonly="readonly"/></td>
+                        </tr>
+                        <tr>
+                            <td>输入验证码</td>
+                            <td><input style="width:90%" type="text" id="input_code"/></td>
+                        </tr>
+                        <tr>
+                            {% ifequal perm_name '可编辑用户' %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="addForumGame" value="同步论坛游戏"></td>
+                            {% endifequal %}
+                            {% ifequal user.is_superuser 1 %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="addForumGame" value="同步论坛游戏"></td>
+                            {% endifequal %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    </aside><!-- /.right-side -->
+
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+$(document).ready(function(){
+    var code = ""; //在全局 定义验证码   
+    var codeLength = 4;//验证码的长度   
+    var checkCode = document.getElementById("checkCode");   
+    var selectChar = new Array(0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','wW','x','y','z');//所有候选组成验证码的字符，当然也可以用中文的   
+    for(var i=0;i<codeLength;i++)   
+    {   
+        var charIndex = Math.floor(Math.random()*36);   
+        code +=selectChar[charIndex];   
+    }   
+    $("#code").val(code);
+});
+$("#addForumGame").click(function(){
+    var code = $("#code").val();
+    var input_code = $("#input_code").val();
+    var descJson = {};
+    if(input_code == code){
+        $.post('/gg_mgmt/uploadGame/addForumGame/', descJson, function(result){
+            window.location.href = '/gg_mgmt/prompt/?msg='+result;
+        });
+    }else{
+        alert("验证码错误！！！");
+    }
+});
+</script>
+{% endblock %}

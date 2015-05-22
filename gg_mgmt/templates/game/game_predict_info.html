@@ -1,0 +1,161 @@
+{% extends "base/base.html" %}
+
+{% block title %}游戏预告数据{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>预告游戏状态</label>
+                                <select id="status" class="form-control">
+                                    {% ifequal status 1 %}
+                                        <option value="1" selected="selected">预告</option>
+                                        <option value="2">取消预告</option>
+                                        <option value="3">已上线</option>
+                                    {% endifequal %}
+                                    {% ifequal status 2 %}
+                                        <option value="1">预告</option>
+                                        <option value="2" selected="selected">取消预告</option>
+                                        <option value="3">已上线</option>
+                                    {% endifequal %}
+                                    {% ifequal status 3 %}
+                                        <option value="1">预告</option>
+                                        <option value="2">取消预告</option>
+                                        <option value="3" selected="selected">已上线</option>
+                                    {% endifequal %}
+                                </select>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <button id="add_game_predict" class="btn btn-info btn-flat" type="button">新增预告游戏</button>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+            <div class="col-xs-3">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <input type="text" id="search_predict_info" autocomplete="off" value="" />
+                                <button id="search_predict" class="btn btn-info btn-flat" type="button">搜索游戏预告</button>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+        </section><!-- /.content -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <th>序号</th>
+                                <th>游戏名</th>
+                                <th>游戏ID</th>
+                                <th>ICON</th>
+                                <th>游戏状态</th>
+                                <th>类型</th>
+                                {%ifequal sort_key 'wanted_counts' %}
+                                    <th style="font-size:20px;color:red">想玩数</th>
+                                {% else %}
+                                    <th><a href="javascript:void(0)" onclick="sorted_game('wanted_counts')" class="btn-small">想玩数</a></th>
+                                {% endifequal %}
+                                {%ifequal sort_key 'save_timestamp' %}
+                                    <th style="font-size:20px;color:red">入库时间</th>
+                                {% else %}
+                                    <th><a href="javascript:void(0)" onclick="sorted_game('save_timestamp')" class="btn-small">入库时间</a></th>
+                                {% endifequal %}
+                                <th>语言</th>
+                                <th>开发商</th>
+                                <th>预告时间</th>
+                                {% for info in infos %}
+                                    <tr>
+                                        <td style="width: 1%">{{ info.number }}</td>
+                                        <td style="width: 5%"><a href="/gg_mgmt/game/predict/add/?game_id={{ info.game_id }}">{{ info.display_name }}</a></td>
+                                        <td style="width: 5%">{{ info.game_id }}</td>
+                                        <td style="width: 5%"><img style="width:75px;height:75px;" src="{{ info.icon_url }}"></td>
+                                        <td style="width: 5%">
+                                            {% ifequal info.game_status 1 %}
+                                                预告
+                                            {% endifequal %}
+                                            {% ifequal info.game_status 2 %}
+                                                取消预告
+                                            {% endifequal %}
+                                            {% ifequal info.game_status 3 %}
+                                                已上线
+                                            {% endifequal %}
+                                        </td>
+                                        <td style="width: 5%">
+                                            {% for category_id in info.category_ids %}
+                                                {% for category in categorys %}
+                                                    {% ifequal category.id category_id %}
+                                                        {{ category.name }}<br />
+                                                    {% endifequal %}
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </td>
+                                        <td style="width: 5%">{{ info.wanted_counts }}</td>
+                                        <td style="width: 5%">{{ info.save_timestamp }}</td>
+                                        <td style="width: 5%">{{ info.game_language }}</td>
+                                        <td style="width: 5%">{{ info.developer }}</td>
+                                        <td style="width: 5%">{{ info.predict_time }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            {% include "base/pagination.html" %}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        $("#add_game_predict").click(function(){
+            window.location.href ="/gg_mgmt/game/predict/add/";
+        });
+        function sorted_game(sort_key) {
+            var status = $("#status").val();
+            window.location.href = '/gg_mgmt/game/predict/info/?status='+status+'&sort_key='+sort_key;
+        }
+        $("#status").change(function(){
+            var status = $("#status").val();
+            window.location.href = '/gg_mgmt/game/predict/info/?status='+status;
+        });
+        $("#search_predict").click(function(){
+            var search_predict_info  = $("#search_predict_info").val();
+            if(search_predict_info){
+                window.location.href = '/gg_mgmt/game/predict/search/?search_predict_info='+search_predict_info;
+            }else{
+                alert("请输入查询内容！！！");
+            }
+        });
+    </script>
+{% endblock %}

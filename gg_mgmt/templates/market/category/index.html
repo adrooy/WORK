@@ -1,0 +1,170 @@
+{% extends "base/base.html" %}
+{% block title %}分类游戏列表{% endblock %}
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+{% block content %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="box-body">
+                            <label>游戏分类</label>
+                            <select id="category_id" class="form-control">
+                                {% for category in categorys %}
+                                    {% ifequal category.0 category_id %}
+                                        <option value="{{ category.0 }}" selected="selected">{{ category.1 }}</option>
+                                    {% else %}
+                                        <option value="{{ category.0 }}">{{ category.1 }}</option>
+                                    {% endifequal %}
+                                {% endfor %}
+                            </select>
+                        </div><!-- /.box-body -->
+                    </div><!--/.col-xs -->
+                </div><!--/.row -->
+            </div><!--/.col-md -->
+        </section><!-- /.content -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <label>人工排序列表</label>
+                        </div>
+                        <div class="box-body">
+                            <button id="cat_game_add" class="btn btn-info btn-flat" type="button">新增分类下游戏</button>
+                        </div>
+                        <div class="box-body">
+                            <table id="example1" class="table table-bordered table-striped" aria-describedby="example1_info">
+                                <thead>
+                                <tr>
+                                    <th>游戏名</th>
+                                    <th>发布状态</th>
+                                    <th>序号</th>
+                                    <th>游戏ID</th>
+                                    <th>游戏状态</th>
+                                    <th>发布时间</th>
+                                    <th>下线时间</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for game in games4peo %}
+                                    <tr>
+                                        {% if not game.enabled %}
+                                            <td><a href="/gg_mgmt/game/detail/?game_id={{ game.game_id }}"><font color="#DDDDDD">{{ game.game_name }}</font></a></td>
+                                            <td><button class="btn btn-info btn-flat" type="button" onclick="cat_game_isenabled('{{ game.game_id }}')">待上线</button></td>
+                                            <td><font color="#DDDDDD">{{ game.manual_num }}</font></td>
+                                            <td><font color="#DDDDDD">{{ game.game_id }}</font></td>
+                                            <td><font color="#DDDDDD">{{ game.game_enabled }}</font></td>
+                                            <td><font color="#DDDDDD">{{ game.release_date }}</font></td>
+                                            <td><font color="#DDDDDD">{{ game.unrelease_date }}</font></td>
+                                        {% endif %}
+                                        {% if game.enabled %}
+                                            <td><a href="/gg_mgmt/game/detail/?game_id={{ game.game_id }}">{{ game.game_name }}</a></td>
+                                            <td><button class="btn btn-info btn-flat" type="button" onclick="cat_game_notenabled('{{ game.game_id }}')">已上线</button></td>
+                                            <td>{{ game.manual_num }}</td>
+                                            <td>{{ game.game_id }}</td>
+                                            <td>{{ game.game_enabled }}</td>
+                                            <td>{{ game.release_date }}</td>
+                                            <td>{{ game.unrelease_date }}</td>
+                                        {% endif %}
+                                        <td>
+                                            <button class="btn btn-info btn-flat" type="button" onclick="cat_game_delete('{{ game.game_id }}')">删除</button>
+                                            <button class="btn btn-info btn-flat" type="button" onclick="cat_game_alter('{{ game.game_id }}')">编辑</button>
+                                            {% if not forloop.first %}
+                                                <button class="btn btn-info btn-flat" type="button" onclick="cat_game_up('{{ game.game_id }}')"><i class="fa fa-fw fa-arrow-up"></i>上移</button>
+                                            {% endif %}
+                                            {% if not forloop.last %}
+                                                <button class="btn btn-info btn-flat" type="button" onclick="cat_game_down('{{ game.game_id }}')"><i class="fa fa-fw fa-arrow-down"></i>下移</button>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                        <div class="box-body">
+                            <label>自然排序列表</label>
+                            <table id="example2" class="table table-bordered table-striped" aria-describedby="example1_info">
+                                <thead>
+                                <tr>
+                                    <th width="20%">游戏名</th>
+                                    <th width="20%">序号</th>
+                                    <th width="20%">游戏ID</th>
+                                    <th width="20%">游戏状态</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for game in games4sys %}
+                                    <tr>
+                                        <td><a href="/gg_mgmt/game/detail/?game_id={{ game.game_id }}">{{ game.game_name }}</a></td>
+                                        <td>{{ game.order_num }}</td>
+                                        <td>{{ game.game_id }}</td>
+                                        <td>{{ game.enabled }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        $(function () {
+            $("#example1").dataTable({
+                "bPaginate": true,
+                "bLengthChange": true,
+                "bFilter": true,
+                "bSort": false,
+                "bInfo": true,
+                "bAutoWidth": true,
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "抱歉， 没有找到",
+                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                    "sInfoEmpty": "没有数据",
+                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "前一页",
+                        "sNext": "后一页",
+                        "sLast": "尾页"
+                    },
+                    "sZeroRecords": "没有检索到数据"
+                }
+            });
+            $("#example2").dataTable({
+                "bPaginate": true,
+                "bLengthChange": true,
+                "bFilter": true,
+                "bSort": false,
+                "bInfo": true,
+                "bAutoWidth": true,
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "抱歉， 没有找到",
+                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                    "sInfoEmpty": "没有数据",
+                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "前一页",
+                        "sNext": "后一页",
+                        "sLast": "尾页"
+                    },
+                    "sZeroRecords": "没有检索到数据"
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript" src="/gg_mgmt/static/js/iplay.js"></script>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base/base.html' %}
+
+{% load filter_extras %}
+
+{% block title %}游戏发布信息{% endblock %}
+
+{% block content %}
+
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">发布信息</h3>
+                        </div><!-- /.box-header -->
+                        {% if not release %}
+                            <div class="box-body">
+                                <button id="release" class="btn btn-info btn-flat" type="button">发布</button>
+                            </div>
+                        {% endif %}
+                        <div class="box-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>发布类型</th>
+                                    <th>发布开始时间</th>
+                                    <th>发布结束时间</th>
+                                    <th>发布结束状态</th>
+                                    <th>发布持续时间(s)</th>
+                                    <th>服务器</th>
+                                    <th>发布结束信息</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for info in infos %}
+                                    <tr>
+                                        <td>{{ info.id }}</td>
+                                        <td>{% get_release_type info.type %}</td>
+                                        <td>{% current_time info.start_date "%Y-%m-%d %H:%M:%S" %}</td>
+                                        <td>{% current_time info.end_date "%Y-%m-%d %H:%M:%S" %}</td>
+                                        <td>{% trinocular info.is_finished "已完成" "进行中" %}</td>
+                                        <td>{% minue_time info.end_date info.start_date %}</td>
+                                        <th>{{ info.worker }}</th>
+                                        <td>{% get_release_msg info.msg %}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>发布类型</th>
+                                    <th>发布开始时间</th>
+                                    <th>发布结束时间</th>
+                                    <th>发布结束状态</th>
+                                    <th>发布持续时间(s)</th>
+                                    <th>服务器</th>
+                                    <th>发布结束信息</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        $("#release").click(function(){
+            descJson = {};
+            $.post('/gg_mgmt/release/game/', descJson, function (result) {
+                alert(result);
+                window.location.href = '/gg_mgmt/release/game/info/';
+            });
+        });
+        $(function () {
+            $("#example1").dataTable({
+                "bSort": false,
+                "bLengthChange": true,
+                "bFilter": false,
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "抱歉， 没有找到",
+                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                    "sInfoEmpty": "没有数据",
+                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "前一页",
+                        "sNext": "后一页",
+                        "sLast": "尾页"
+                    },
+                    "sZeroRecords": "没有检索到数据"
+                }
+            });
+        });
+    </script>
+{% endblock %}

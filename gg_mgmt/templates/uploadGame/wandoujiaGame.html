@@ -1,0 +1,88 @@
+{% extends "header.html" %}
+
+{% block title %}国内市场游戏资料{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+
+    <aside class="side">
+
+        <!-- Main content -->
+
+        <section class="content">
+            <div class="col-md-10">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>APK信息</td>
+                            <td><textarea style="width:80%;" id="game_json" rows="12" cols="140" class="required" tabindex="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>百度下载链接</td>
+                            <td><input style="width:80%" type="text" id="baidu_url"/></td>
+                        </tr>
+                        <tr>
+                            <td>游戏详情页地址</td>
+                            <td><input style="width:80%" type="text" id="detail_url"/></td>
+                        </tr>
+                        <tr>
+                            <td>游戏更新说明</td>
+                            <td><input style="width:80%" type="text" id="update_desc"/></td>
+                        </tr>
+                        <!--tr>
+                            <td>游戏渠道</td>
+                            <td>
+                            <select id="channel" style="width:150px">
+                            <option value="360" >360</option>
+                            <option value="91" >91</option>
+                            <option value="安卓市场" >安卓市场</option>
+                            <option value="小米" >小米</option>
+                            <option value="应用宝" >应用宝</option>
+                            <option value="百度" >百度</option>
+                            <option value="豌豆荚" >豌豆荚</option>
+                            </select>
+                            </td>
+                        </tr-->
+                        <tr>
+                            {% ifequal perm_name '可编辑用户' %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="addWandoujiaGame" value="上传推广游戏"></td>
+                            {% endifequal %}
+                            {% ifequal user.is_superuser 1 %}
+                            <td><input style="width:140px;background:#0099ff;color:#ffffff" type="button" id="addWandoujiaGame" value="上传推广游戏"></td>
+                            {% endifequal %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    </aside><!-- /.right-side -->
+
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+$("#addWandoujiaGame").click(function(){
+    var game_json = $("#game_json").val();
+    var baidu_url = $("#baidu_url").val();
+    var detail_url = $("#detail_url").val();
+//    var channel = $("#channel").val();
+    var update_desc = $("#update_desc").val();
+    var descJson = {};
+    descJson['game_json'] = game_json;
+    descJson['baidu_url'] = baidu_url;
+//    descJson['channel'] = channel;
+    descJson['detail_url'] = detail_url;
+    descJson['update_desc'] = update_desc;
+    alert(JSON.stringify(descJson));
+    if(game_json && detail_url){
+        $("#addWandoujiaGame").css("visibility", "hidden");
+        $.post('/gg_mgmt/uploadGame/addWandoujiaGame/', descJson, function(result){
+            window.location.href = '/gg_mgmt/prompt/?msg='+result;
+        });
+    }else{
+        alert("请输入游戏资料！！！");
+    }
+});
+</script>
+{% endblock %}

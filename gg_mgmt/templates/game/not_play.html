@@ -1,0 +1,139 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ game_id }}不可玩信息{% endblock %}
+
+{% block user %}{{user.last_name}}{{user.first_name}}{% endblock %}
+
+{% block content %}
+     
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body"> 
+                            <label>不可玩的机型</label>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <th>游戏名</th>
+                                <th>model</th>
+                                <th>测试人</th>
+                                <th>添加时间</th>
+                                <th>操作</th>
+                                <th>
+                                    <button class="btn btn-info btn-flat" type="button" onclick="add_model('{{ game_id }}')">新增</button>
+                                </th>
+                                {% for list in models %}
+                                    <tr>
+                                        <td><a href="/gg_mgmt/game/detail/?game_id={{ game_id }}">{{ game_name }}</a></td>
+                                        <td>{{ list.model }}</td>
+                                        <td>{{ list.user_name }}</td>
+                                        <td>{{ list.save_timestamp }}</td>
+                                        <td style="width: 10%">
+                                            <button class="btn btn-info btn-flat" type="button" onclick="del_model('{{ list.id }}')">删除</button>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body"> 
+                            <label>不可玩的fingerprint</label>
+                            <table class="table table-bordered">
+                                <th>游戏名</th>
+                                <th>fingerprint</th>
+                                <th>测试人</th>
+                                <th>添加时间</th>
+                                <th>操作</th>
+                                <th>
+                                    <button class="btn btn-info btn-flat" type="button" onclick="add_fingerprint('{{ game_id }}')">新增</button>
+                                </th>
+                                {% for list in fingerprints %}
+                                    <tr>
+                                        <td><a href="/gg_mgmt/game/detail/?game_id={{ game_id }}">{{ game_name }}</a></td>
+                                        <td>{{ list.fingerprint }}</td>
+                                        <td>{{ list.user_name }}</td>
+                                        <td>{{ list.save_timestamp }}</td>
+                                        <td style="width: 10%">
+                                            <button class="btn btn-info btn-flat" type="button" onclick="del_fingerprint('{{ list.id }}')">删除</button>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section>
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript">
+        function add_model(game_id) {
+            var model = prompt('请输入不可玩的机型model:');
+            if(model){
+                var descJson = {};
+                descJson['game_id'] = game_id;
+                descJson['model'] = model;
+                descJson['type'] = 'model';
+                $.post('/gg_mgmt/game/edit_not_play/', descJson, function(result){
+                    window.location.reload();
+                });
+            }else{
+                alert("添加出错");
+            }
+        }
+        function add_fingerprint(game_id) {
+            var fingerprint = prompt('请输入不可玩的fingerprint:');
+            if(fingerprint){
+                var descJson = {};
+                descJson['game_id'] = game_id;
+                descJson['fingerprint'] = fingerprint;
+                descJson['type'] = 'fingerprint';
+                $.post('/gg_mgmt/game/edit_not_play/', descJson, function(result){
+                    window.location.reload();
+                });
+            }else{
+                alert("添加出错");
+            }
+        }
+        function del_model(id) {
+            if(confirm('确认删除吗？')){
+                if(id){
+                    var descJson = {};
+                    descJson['id'] = id;
+                    descJson['type'] = 'model';
+                    $.post('/gg_mgmt/game/del_not_play/', descJson, function(result){
+                        window.location.reload();
+                    });
+                }else{
+                    alert("删除出错");
+                }
+            }else{
+                alert('取消删除');
+            }
+        }
+        function del_fingerprint(id) {
+            if(confirm('确认删除吗？')){
+                if(id){
+                    var descJson = {};
+                    descJson['id'] = id;
+                    descJson['type'] = 'fingerprint';
+                    $.post('/gg_mgmt/game/del_not_play/', descJson, function(result){
+                        window.location.reload();
+                    });
+                }else{
+                    alert("删除出错");
+                }
+            }else{
+                alert('取消删除');
+            }
+        }
+    </script>
+{% endblock %}
